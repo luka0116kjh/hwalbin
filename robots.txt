@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /vault/flag.txt
+
+# A tempting path, but a dead end.
+# The real door is the HWALBINDANG logo. Knock five times.
+# 막다른 길입니다. 진짜 문은 HWALBINDANG 로고입니다. 다섯 번 두드려 보세요.

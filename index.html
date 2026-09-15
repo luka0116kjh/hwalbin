@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0d11">
-  <meta name="description" content="활빈 Hwalbin — 국제 CTF 대회 참가와 버그 바운티 활동으로 더 안전한 세상을 탐구하는 해킹팀. 공식 사이트 디자인 데모.">
+  <meta name="description" content="활빈당 Hwalbindang — 국제 CTF 대회 참가와 버그 바운티 활동으로 더 안전한 세상을 탐구하는 해킹팀. 공식 사이트 디자인 데모.">
   <title>HWALBIN</title>
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d62ff'/%3E%3Cpath d='M15 14h9v14h16V14h9v36h-9V36H24v14h-9z' fill='white'/%3E%3C/svg%3E">
@@ -421,7 +421,7 @@
 
     .art-word {
       font-weight: 900;
-      font-size: clamp(125px, 14vw, 205px);
+      font-size: clamp(100px, 10vw, 145px);
       letter-spacing: -.12em;
       line-height: .9;
       transform: skewY(-10deg);
@@ -1037,7 +1037,7 @@
       }
 
       .art-word {
-        font-size: 145px
+        font-size: 100px
       }
 
       .hero-copy {
@@ -1255,13 +1255,39 @@
       }
     }
 
-    @media(max-width:380px) {
+    @media(max-width:480px) {
       .header .wrap { gap: 8px }
       .header-tools { gap: 6px }
       .header .brand { gap: 7px }
-      .header .brand-word { font-size: 21px }
+      .header .brand-word { font-size: 18px; letter-spacing: .05em }
       .header .brand-symbol { width: 28px; height: 28px }
       .menu { padding: 0 }
+    }
+
+    .flag-dialog {
+      width: min(520px, calc(100% - 40px));
+      max-height: calc(100dvh - 40px);
+      overflow: auto;
+      padding: 28px;
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text)
+    }
+
+    .flag-dialog::backdrop { background: #000a }
+    .flag-dialog h2 { margin: 0 0 12px; font-size: 24px }
+    .flag-dialog p { margin: 0 0 20px; color: var(--muted) }
+    .flag-dialog code {
+      display: block;
+      padding: 16px;
+      margin-bottom: 24px;
+      background: var(--bg);
+      color: var(--accent);
+      font: 15px/1.8 Consolas, 'Courier New', monospace;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      user-select: all
     }
 
     @media(prefers-reduced-motion:reduce) {
@@ -1283,8 +1309,8 @@
   <a class="skip" href="#main"><span data-i18n="skip">본문으로 이동</span></a>
   <header class="header">
     <div class="wrap">
-      <a class="brand" href="#main" data-i18n-label="homeLabel" aria-label="활빈 메인"><span class="brand-symbol" aria-hidden="true">H</span><span
-          class="brand-word">HWALBIN</span><span class="brand-ko" lang="ko">활빈</span></a>
+      <a class="brand" href="#main" data-i18n-label="homeLabel" aria-label="활빈당 메인"><span class="brand-symbol" aria-hidden="true">H</span><span
+          class="brand-word">HWALBIN</span><span class="brand-ko" lang="ko">활빈당</span></a>
       <nav class="nav" id="navigation" data-i18n-label="navLabel" aria-label="주요 메뉴"><a href="#about"><span data-i18n="navAbout">소개</span></a><a href="#research"><span data-i18n="navResearch">연구 분야</span></a><a
           href="#activity"><span data-i18n="navActivity">활동</span></a><a href="#faq">FAQ</a></nav>
       <div class="header-tools"><span class="edition mono">DEMO / 01</span><button class="language" type="button" aria-label="Switch to English" title="Switch to English" lang="en" hidden>EN</button><button class="theme" type="button"
@@ -1299,14 +1325,14 @@
           <div class="hero-tag mono">HWALBIN · HACKING TEAM</div>
           <h1 class="condensed" id="hero-title">BEYOND<br>THE <span style="display:inline">LIMIT.</span></h1>
           <p class="hero-desc"><span data-i18n="hero"><strong>어서 와~ 보안은 처음이지?</strong><br>해킹팀 : Hwalbin<br>국제 CTF 대회 참가 · 버그 바운티 활동</span></p>
-          <div class="actions"><a class="button primary" href="#about"><span data-i18n="exploreAbout">활빈 알아보기</span> <span class="arrow"
+          <div class="actions"><a class="button primary" href="#about"><span data-i18n="exploreAbout">활빈당 알아보기</span> <span class="arrow"
                 aria-hidden="true">↗</span></a><a class="button" href="#activity"><span data-i18n="exploreActivities">활동 둘러보기</span> <span class="arrow"
                 aria-hidden="true">↗</span></a></div>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="orbit"></div>
           <div class="orbit two"></div><span class="cross one">+</span>
-          <div class="art-word"><span>활</span><span>빈</span></div><span class="cross two">+</span><span
+          <div class="art-word"><span>활</span><span>빈</span><span>당</span></div><span class="cross two">+</span><span
             class="art-caption mono">CURIOSITY IS OUR SOURCE CODE.</span><span class="art-coordinate mono">[
             HWALBIN_IDENTITY / 001 ]</span>
         </div>
@@ -1324,8 +1350,8 @@
         <div class="intro-grid">
           <h2 class="section-title"><span data-i18n="aboutTitle">당연한 것에 질문하고,<br><em>새로운 가능성</em>을 찾습니다.</span></h2>
           <div class="intro-copy">
-            <p><span data-i18n="aboutCuriosity">시스템이 어떻게 작동하는지, 익숙한 기술 안에 무엇이 숨어 있는지. 활빈의 이야기는 작은 호기심에서 시작됩니다.</span></p>
-            <p><span data-i18n="aboutTeam">활빈은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 문제를 해결하고 취약점을 발견하며, 그 과정에서 얻은 지식을 나누어 더 안전한 내일을 만들어갑니다.</span></p>
+            <p><span data-i18n="aboutCuriosity">시스템이 어떻게 작동하는지, 익숙한 기술 안에 무엇이 숨어 있는지. 활빈당의 이야기는 작은 호기심에서 시작됩니다.</span></p>
+            <p><span data-i18n="aboutTeam">활빈당은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 문제를 해결하고 취약점을 발견하며, 그 과정에서 얻은 지식을 나누어 더 안전한 내일을 만들어갑니다.</span></p>
           </div>
         </div>
         <div class="values">
@@ -1436,13 +1462,13 @@
       <div class="wrap faq-layout">
         <div class="faq-intro">
           <div class="eyebrow mono"><span class="no">04 /</span> QUESTIONS</div>
-          <h2 class="section-title"><span data-i18n="faqTitle">활빈이 <em>궁금하다면.</em></span></h2>
+          <h2 class="section-title"><span data-i18n="faqTitle">활빈당이 <em>궁금하다면.</em></span></h2>
           <p><span data-i18n="faqIntro">팀 소개와 참여에 관한 안내입니다.</span></p>
         </div>
         <div class="questions">
           <details open>
-            <summary><span data-i18n="faqTeamQ">활빈은 어떤 팀인가요?</span></summary>
-            <p><span data-i18n="faqTeamA">활빈(Hwalbin)은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 보안 문제를 해결하고 실제 서비스의 취약점을 탐구하며, 경험과 지식을 나눕니다.</span></p>
+            <summary><span data-i18n="faqTeamQ">활빈당은 어떤 팀인가요?</span></summary>
+            <p><span data-i18n="faqTeamA">활빈당(Hwalbin)은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 보안 문제를 해결하고 실제 서비스의 취약점을 탐구하며, 경험과 지식을 나눕니다.</span></p>
           </details>
           <details>
             <summary><span data-i18n="faqFieldsQ">어떤 분야를 다루나요?</span></summary>
@@ -1463,23 +1489,32 @@
       <div class="wrap">
         <div>
           <h2>THE NEXT CHAPTER IS OURS.</h2>
-          <p><span data-i18n="closing">다음 가능성을 여는 이름, 활빈.</span></p>
+          <p><span data-i18n="closing">다음 가능성을 여는 이름, 활빈당.</span></p>
         </div><a class="button" href="#main"><span data-i18n="backTop">처음으로 돌아가기</span> <span class="arrow" aria-hidden="true">↑</span></a>
       </div>
     </section>
   </main>
   <footer>
     <div class="wrap">
-      <div class="footer-main"><a class="brand" href="#main" data-i18n-label="homeLabel" aria-label="활빈 메인"><span class="brand-symbol"
-            aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko" lang="ko">활빈</span></a>
+      <div class="footer-main"><a class="brand" href="#main" data-i18n-label="homeLabel" aria-label="활빈당 메인"><span class="brand-symbol"
+            aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko" lang="ko">활빈당</span></a>
         <p>© 2026 Hwalbin. All rights reserved.</p>
       </div>
       <div class="footer-note"><span><span data-i18n="demo">디자인 데모 · </span><a href="https://ctftime.org/team/304129" target="_blank"
-            rel="noopener noreferrer" data-i18n-label="historyLabel" aria-label="CTFtime에서 활빈 활동 기록 보기 (새 탭)"
+            rel="noopener noreferrer" data-i18n-label="historyLabel" aria-label="CTFtime에서 활빈당 활동 기록 보기 (새 탭)"
             style="text-decoration:underline;text-underline-offset:3px"><span data-i18n="historyLink">CTFtime에서 활동 기록 보기 ↗</span></a></span><span
           class="mono">BUILT ON CURIOSITY.</span></div>
     </div>
   </footer>
+  <!-- Curiosity rewarded. Welcome to Hwalbin.
+       hwalbin{h3y_th3r3_w3lc0m3_t0_hw4lb1n_5ec}
+  -->
+  <dialog class="flag-dialog" id="flag-dialog" aria-labelledby="flag-title" aria-describedby="flag-description">
+    <h2 id="flag-title" data-i18n="flagTitle">플래그를 찾았습니다!</h2>
+    <p id="flag-description" data-i18n="flagDescription">호기심 많은 당신, 활빈당에 오신 것을 환영합니다.</p>
+    <code id="flag-value"></code>
+    <form method="dialog"><button class="button" type="submit" data-i18n="flagClose" autofocus>닫기</button></form>
+  </dialog>
   <script>
     (() => {
       const root = document.documentElement;
@@ -1490,6 +1525,9 @@
       // Korean copy lives in the HTML so the page also works without JavaScript.
       // English translations are trusted, authored markup, never user input.
       const english = {
+        "flagTitle": "You found the flag!",
+        "flagDescription": "Stay curious. Welcome to Hwalbin.",
+        "flagClose": "Close",
         "skip": "Skip to content",
         "navAbout": "About",
         "navResearch": "Research",
@@ -1626,6 +1664,25 @@
       const tabs = [...document.querySelectorAll('[role="tab"]')]; function activate(tab, focus = false) { tabs.forEach(t => { const selected = t === tab; t.setAttribute('aria-selected', String(selected)); t.tabIndex = selected ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !selected }); if (focus) tab.focus() }
       tabs.forEach((tab, i) => { tab.addEventListener('click', () => activate(tab)); tab.addEventListener('keydown', e => { let next; if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % tabs.length; if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i + tabs.length - 1) % tabs.length; if (e.key === 'Home') next = 0; if (e.key === 'End') next = tabs.length - 1; if (next !== undefined) { e.preventDefault(); activate(tabs[next], true) } }) });
       const links = [...nav.querySelectorAll('a')]; if ('IntersectionObserver' in window) { const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { links.forEach(link => { const active = link.hash === '#' + entry.target.id; link.classList.toggle('active', active); if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current') }) } }) }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 }); document.querySelectorAll('section[id]').forEach(s => observer.observe(s)) }
+    })();
+    (() => {
+      console.log('[HWALBIN] 눈에 보이는 것이 전부는 아닙니다. /robots.txt를 살펴보세요.');
+      console.log('[HWALBIN] There is more than meets the eye. Take a look at /robots.txt.');
+      const flagDialog = document.getElementById('flag-dialog');
+      const flagValue = document.getElementById('flag-value');
+      let logoClicks = 0;
+      document.querySelectorAll('.brand').forEach(logo => {
+        logo.addEventListener('click', event => {
+          // Preserve modified clicks, such as opening the home link in a new tab.
+          if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+          logoClicks += 1;
+          if (logoClicks < 5) return;
+          logoClicks = 0;
+          event.preventDefault();
+          flagValue.textContent = 'hwalbin{h3y_th3r3_w3lc0m3_t0_hw4lb1n_5ec}';
+          if (!flagDialog.open) flagDialog.showModal();
+        });
+      });
     })();
   </script>
 </body>
