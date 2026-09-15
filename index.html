@@ -1,63 +1,1472 @@
 <!doctype html>
 <html lang="ko" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0d11"><meta name="description" content="활빈 Hwalbin — 국제 CTF 대회 참가와 버그 바운티 활동으로 더 안전한 세상을 탐구하는 해킹팀. 공식 사이트 디자인 데모.">
-  <title>HWALBIN — 경계 너머의 가능성</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d62ff'/%3E%3Cpath d='M15 14h9v14h16V14h9v36h-9V36H24v14h-9z' fill='white'/%3E%3C/svg%3E">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d11">
+  <meta name="description" content="활빈 Hwalbin — 국제 CTF 대회 참가와 버그 바운티 활동으로 더 안전한 세상을 탐구하는 해킹팀. 공식 사이트 디자인 데모.">
+  <title>HWALBIN</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231d62ff'/%3E%3Cpath d='M15 14h9v14h16V14h9v36h-9V36H24v14h-9z' fill='white'/%3E%3C/svg%3E">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap');
-    :root{color-scheme:dark;--bg:#0b0d11;--surface:#101319;--card:#14181f;--text:#f3f5fa;--muted:#969da9;--line:#272c35;--accent:#4f83ff;--solid:#2362f5;--header:rgba(11,13,17,.88)}
-    [data-theme=light]{color-scheme:light;--bg:#f5f6fa;--surface:#fff;--card:#eceff5;--text:#11151d;--muted:#626b7b;--line:#d5dae4;--accent:#225fef;--solid:#225fef;--header:rgba(245,246,250,.92)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--bg);color:var(--text);font-family:'Noto Sans KR',Arial,sans-serif;line-height:1.7;word-break:keep-all}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:6px}::selection{background:var(--solid);color:#fff}.wrap{width:min(1280px,calc(100% - 112px));margin:auto}.mono{font-family:Consolas,'Courier New',monospace;font-size:12px;letter-spacing:.09em}.condensed{font-family:'Barlow Condensed','Arial Narrow',Impact,sans-serif}.eyebrow{display:flex;gap:20px;align-items:center;color:var(--muted);text-transform:uppercase}.eyebrow .no{color:var(--accent)}.eyebrow:after{content:'';height:1px;width:70px;background:var(--line)}
-    .skip{position:fixed;top:-100px;left:20px;padding:12px;background:var(--solid);z-index:100}.skip:focus{top:10px}.header{height:90px;position:sticky;top:0;z-index:30;background:var(--header);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:28px}.brand{display:flex;align-items:center;gap:12px}.brand-symbol{background:var(--solid);width:33px;height:33px;display:grid;place-items:center;font:bold 25px/1 Arial;color:white;transform:skew(-9deg)}.brand-word{font:800 27px/1 'Barlow Condensed',Impact,sans-serif;letter-spacing:.09em}.brand-ko{border-left:1px solid var(--line);padding-left:14px;font-size:14px;font-weight:700;letter-spacing:.12em}.nav{display:flex;align-items:center;gap:32px;margin-left:auto}.nav a{font-size:14px;color:var(--muted);transition:color .2s}.nav a:hover,.nav a.active{color:var(--text)}.nav a.active:after{content:'';display:block;height:3px;width:14px;background:var(--accent);margin-top:4px;position:absolute}.header-tools{display:flex;gap:12px;align-items:center}.theme{background:none;border:1px solid var(--line);border-radius:50%;width:36px;height:36px;display:grid;place-items:center;font-size:19px}.edition{font-size:11px;letter-spacing:.12em;color:var(--muted);margin-left:4px}.menu{display:none;border:0;background:none;font-size:14px}
-    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}.hero:before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;opacity:.13;mask-image:linear-gradient(90deg,transparent,#000)}.hero-inner{position:relative;min-height:690px;display:grid;grid-template-columns:1.15fr 1fr;align-items:center;padding-top:54px;padding-bottom:90px}.hero-tag{display:flex;align-items:center;gap:13px;margin-bottom:28px;font-size:12px;letter-spacing:.13em;color:var(--muted)}.hero-tag:before{content:'';width:26px;height:2px;background:var(--accent)}h1{font-size:clamp(86px,8.6vw,132px);line-height:.87;letter-spacing:-.01em;margin:0 0 28px;font-weight:800}h1 span{color:var(--accent);display:block}.hero-desc{font-size:17px;color:var(--muted);line-height:1.9;margin:0 0 31px}.hero-desc strong{color:var(--text);font-weight:500}.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;gap:36px;padding:13px 21px;font-size:14px;font-weight:500;border:1px solid var(--line);background:var(--surface);transition:background .2s,transform .2s}.button.primary{background:var(--solid);border-color:var(--solid);color:white}.button:hover{transform:translateY(-3px);background:var(--card)}.button.primary:hover{background:#164ecc}.arrow{font-family:Arial,sans-serif;font-size:20px}.hero-bottom{position:absolute;bottom:24px;left:0;right:0;display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:11px}.hero-bottom a{display:flex;gap:18px;align-items:center}.hero-art{height:450px;position:relative;display:flex;align-items:center;justify-content:center;isolation:isolate}.orbit{position:absolute;width:400px;height:400px;border:1px solid var(--line);border-radius:50%;transform:rotate(-25deg)}.orbit:after{content:'';position:absolute;inset:25px;border:1px dashed var(--line);border-radius:50%}.orbit.two{width:445px;height:185px;border-color:var(--accent);opacity:.35;transform:rotate(-40deg)}.orbit.two:after{display:none}.art-word{font-weight:900;font-size:clamp(125px,14vw,205px);letter-spacing:-.12em;line-height:.9;transform:skewY(-10deg);position:relative;color:var(--text);text-shadow:8px 9px 0 var(--solid);margin-right:22px}.art-word span{display:block}.cross{position:absolute;font-family:monospace;font-size:22px;font-weight:400;color:var(--accent)}.cross.one{top:18px;left:28px}.cross.two{bottom:14px;right:6px}.art-caption{position:absolute;right:3px;top:45px;color:var(--muted);writing-mode:vertical-rl;font-size:11px;letter-spacing:.16em}.art-coordinate{position:absolute;bottom:8px;left:0;color:var(--muted);font-size:11px}.hero-art:before{content:'';position:absolute;inset:50px;background:radial-gradient(circle,#2362f51a,transparent 66%);z-index:-1}.ticker{border-bottom:1px solid var(--line);background:var(--surface);padding:21px 0}.ticker .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.ticker span{color:var(--muted);font:600 17px 'Barlow Condensed',Impact,sans-serif;letter-spacing:.1em}.ticker i{font-style:normal;color:var(--accent);font-size:17px}
-    section.content{padding:104px 0;border-bottom:1px solid var(--line)}.section-title{font-size:clamp(34px,3.4vw,50px);letter-spacing:-.045em;line-height:1.4;margin:24px 0;font-weight:800}.section-title em{color:var(--accent);font-style:normal}.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px}.intro-copy{font-size:17px;color:var(--muted);padding-top:43px;line-height:2}.intro-copy p{margin-top:0}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:46px}.value{padding-top:25px;border-top:1px solid var(--line)}.value .mono{color:var(--accent)}.value h3{font-size:19px;margin:16px 0 8px}.value p{color:var(--muted);font-size:15px;margin:0}.research{background:var(--surface)}.section-heading{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:36px}.section-heading .section-title{margin-bottom:0}.section-heading p{color:var(--muted);font-size:15px;max-width:330px;margin:0}.research-layout{display:grid;grid-template-columns:300px 1fr;border:1px solid var(--line);min-height:330px}.tabs{border-right:1px solid var(--line);display:flex;flex-direction:column}.tabs button{background:transparent;text-align:left;border:0;border-bottom:1px solid var(--line);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;font-size:15px;color:var(--muted);flex:1}.tabs button:last-child{border-bottom:0}.tabs button[aria-selected=true]{background:var(--solid);color:white}.tabs button span{font:12px Consolas,monospace;opacity:.7}.panel{position:relative;padding:38px 45px;overflow:hidden}.panel h3{font:700 46px/1.1 'Barlow Condensed',Impact,sans-serif;margin:15px 0 18px}.panel p{font-size:16px;color:var(--muted);max-width:490px;position:relative;z-index:1}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:25px}.tag{border:1px solid var(--line);color:var(--muted);padding:3px 10px;font:12px/1.8 Consolas,monospace}.panel-number{position:absolute;right:25px;bottom:0;font:800 190px/.8 'Barlow Condensed',Impact,sans-serif;color:var(--line);opacity:.38;pointer-events:none}.panel[hidden]{display:none}.sample{border:1px solid var(--line);padding:4px 9px;color:var(--muted);font-size:12px;white-space:nowrap}.activities{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.activity{background:var(--surface);border:1px solid var(--line);padding:28px;transition:transform .2s,border-color .2s}.activity:hover{transform:translateY(-4px);border-color:var(--accent)}.activity-type{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.activity-visual{height:150px;display:flex;align-items:center;justify-content:center;margin:16px 0 24px;border-bottom:1px solid var(--line);font:700 61px 'Barlow Condensed',Impact,sans-serif;letter-spacing:-.025em;color:var(--accent)}.activity:nth-child(2) .activity-visual{color:var(--text)}.activity:nth-child(3) .activity-visual{font:700 49px Consolas,monospace}.activity h3{font-size:20px;margin:15px 0 10px}.activity p{font-size:15px;color:var(--muted);margin:0 0 23px;line-height:1.85}.activity details{border-top:1px solid var(--line);padding-top:14px}.activity summary{display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:14px;list-style:none}.activity summary:after{content:'+';color:var(--accent);font-size:22px}.activity details[open] summary:after{content:'−'}.activity details p{font-size:14px;margin-top:16px;margin-bottom:0}.faq-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:90px}.faq-intro p{font-size:15px;color:var(--muted)}.questions details{border-bottom:1px solid var(--line);padding:23px 0}.questions details:first-child{border-top:1px solid var(--line)}.questions summary{display:flex;justify-content:space-between;gap:24px;align-items:center;cursor:pointer;list-style:none;font-size:17px;font-weight:500}.questions summary:after{content:'+';color:var(--accent);font-size:24px;font-weight:400}.questions details[open] summary:after{content:'−'}.questions details p{font-size:15px;color:var(--muted);line-height:1.9;margin:16px 30px 0 0}summary::-webkit-details-marker{display:none}.closing{padding:65px 0;background:var(--solid);color:white}.closing .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px}.closing h2{font:700 clamp(40px,5vw,70px)/1 'Barlow Condensed',Impact,sans-serif;margin:0 0 14px}.closing p{font-size:15px;margin:0;color:#d9e4ff}.closing a{flex-shrink:0;border-color:#ffffff55;background:transparent;color:#fff}.closing a:hover{background:#ffffff20}footer{padding:40px 0}.footer-main{display:flex;align-items:center;justify-content:space-between;gap:20px}.footer-main p{font-size:12px;color:var(--muted);margin:0}.footer-note{border-top:1px solid var(--line);margin-top:30px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;font-size:12px;color:var(--muted)}
-    @media(min-width:1600px){.hero-inner{min-height:750px}.hero-art{height:490px}}
-    @media(max-width:1050px){.wrap{width:calc(100% - 64px)}.nav{gap:22px}.brand-ko,.edition{display:none}.hero-inner{min-height:640px}.hero-art{height:380px}.orbit{width:310px;height:310px}.orbit.two{width:350px;height:150px}.intro-grid,.faq-layout{gap:45px}.research-layout{grid-template-columns:245px 1fr}.activity{padding:22px}.activity-visual{font-size:49px}.activity:nth-child(3) .activity-visual{font-size:37px}}
-    @media(max-width:720px){html{scroll-padding-top:84px}.wrap{width:calc(100% - 40px)}.header{height:72px}.brand-word{font-size:24px}.header .wrap{gap:16px}.header-tools{margin-left:auto}.menu{display:block}.nav{display:none;position:absolute;top:71px;left:0;right:0;padding:20px;background:var(--bg);border-bottom:1px solid var(--line);margin:0;flex-wrap:wrap;justify-content:space-around;gap:20px}.nav.open{display:flex}.nav a{font-size:14px}.hero-inner{grid-template-columns:1fr;min-height:0;padding:45px 0 68px}.hero-tag{font-size:11px;margin-bottom:24px}h1{font-size:clamp(76px,17vw,120px);line-height:.91;margin-bottom:22px}.hero-desc{font-size:15px}.hero-art{position:absolute;right:-78px;top:90px;width:255px;height:300px;opacity:.14;z-index:-1}.art-word{font-size:145px}.hero-copy{position:relative;z-index:1}.orbit{width:250px;height:250px}.orbit.two{width:280px;height:120px}.cross,.art-caption,.art-coordinate{display:none}.hero-bottom{bottom:19px;font-size:10px}.hero-bottom>span{max-width:200px}.button{padding:12px 17px;gap:23px}.ticker{padding:17px 0}.ticker .wrap{justify-content:center;gap:13px}.ticker span{font-size:14px}.ticker i{font-size:12px}.ticker span:last-child,.ticker i:last-of-type{display:none}section.content{padding:66px 0}.intro-grid,.faq-layout{grid-template-columns:1fr;gap:8px}.intro-copy{padding-top:0;font-size:16px}.section-title{font-size:34px;margin:20px 0}.values{grid-template-columns:1fr;margin-top:26px;gap:24px}.value{display:grid;grid-template-columns:40px 1fr;gap:3px 14px;padding-top:22px}.value .mono{grid-row:span 2;padding-top:3px}.value h3{margin:0 0 7px;font-size:18px}.value p{font-size:14px}.section-heading{align-items:flex-start;flex-direction:column;gap:18px;margin-bottom:26px}.section-heading p{font-size:14px}.research-layout{grid-template-columns:1fr}.tabs{flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--line)}.tabs button{flex:auto;width:50%;padding:16px;font-size:14px;border-bottom:1px solid var(--line)}.tabs button:nth-child(odd){border-right:1px solid var(--line)}.tabs button:nth-last-child(-n+2){border-bottom:0}.panel{padding:27px 24px;min-height:320px}.panel h3{font-size:40px}.panel p{font-size:15px}.panel-number{font-size:145px}.activities{grid-template-columns:1fr}.activity{padding:24px}.activity-visual{height:120px;margin:8px 0 15px;font-size:60px}.activity:nth-child(3) .activity-visual{font-size:46px}.faq-layout{gap:26px}.questions summary{font-size:15px}.closing{padding:43px 0}.closing .wrap{align-items:flex-start;flex-direction:column;gap:25px}.closing p{font-size:14px}.footer-main{align-items:flex-start;flex-direction:column;gap:20px}.footer-note{flex-direction:column;gap:8px}footer{padding:30px 0}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d11;
+      --surface: #101319;
+      --card: #14181f;
+      --text: #f3f5fa;
+      --muted: #969da9;
+      --line: #272c35;
+      --accent: #4f83ff;
+      --solid: #2362f5;
+      --header: rgba(11, 13, 17, .88)
+    }
+
+    [data-theme=light] {
+      color-scheme: light;
+      --bg: #f5f6fa;
+      --surface: #fff;
+      --card: #eceff5;
+      --text: #11151d;
+      --muted: #626b7b;
+      --line: #d5dae4;
+      --accent: #225fef;
+      --solid: #225fef;
+      --header: rgba(245, 246, 250, .92)
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans KR', Arial, sans-serif;
+      line-height: 1.7;
+      word-break: keep-all
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      cursor: pointer
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 6px
+    }
+
+    ::selection {
+      background: var(--solid);
+      color: #fff
+    }
+
+    .wrap {
+      width: min(1280px, calc(100% - 112px));
+      margin: auto
+    }
+
+    .mono {
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 12px;
+      letter-spacing: .09em
+    }
+
+    .condensed {
+      font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif
+    }
+
+    .eyebrow {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      color: var(--muted);
+      text-transform: uppercase
+    }
+
+    .eyebrow .no {
+      color: var(--accent)
+    }
+
+    .eyebrow:after {
+      content: '';
+      height: 1px;
+      width: 70px;
+      background: var(--line)
+    }
+
+    .skip {
+      position: fixed;
+      top: -100px;
+      left: 20px;
+      padding: 12px;
+      background: var(--solid);
+      z-index: 100
+    }
+
+    .skip:focus {
+      top: 10px
+    }
+
+    .header {
+      height: 90px;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--header);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line)
+    }
+
+    .header .wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .brand-symbol {
+      background: var(--solid);
+      width: 33px;
+      height: 33px;
+      display: grid;
+      place-items: center;
+      font: bold 25px/1 Arial;
+      color: white;
+      transform: skew(-9deg)
+    }
+
+    .brand-word {
+      font: 800 27px/1 'Barlow Condensed', Impact, sans-serif;
+      letter-spacing: .09em
+    }
+
+    .brand-ko {
+      border-left: 1px solid var(--line);
+      padding-left: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: .12em
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-left: auto
+    }
+
+    .nav a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: color .2s
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text)
+    }
+
+    .nav a.active:after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 14px;
+      background: var(--accent);
+      margin-top: 4px;
+      position: absolute
+    }
+
+    .header-tools {
+      display: flex;
+      gap: 12px;
+      align-items: center
+    }
+
+    .theme {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      font-size: 19px
+    }
+
+    .edition {
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--muted);
+      margin-left: 4px
+    }
+
+    .menu {
+      display: none;
+      border: 0;
+      background: none;
+      font-size: 14px
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .hero:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: .13;
+      mask-image: linear-gradient(90deg, transparent, #000)
+    }
+
+    .hero-inner {
+      position: relative;
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: center;
+      padding-top: 54px;
+      padding-bottom: 90px
+    }
+
+    .hero-tag {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 28px;
+      font-size: 12px;
+      letter-spacing: .13em;
+      color: var(--muted)
+    }
+
+    .hero-tag:before {
+      content: '';
+      width: 26px;
+      height: 2px;
+      background: var(--accent)
+    }
+
+    h1 {
+      font-size: clamp(86px, 8.6vw, 132px);
+      line-height: .87;
+      letter-spacing: -.01em;
+      margin: 0 0 28px;
+      font-weight: 800
+    }
+
+    h1 span {
+      color: var(--accent);
+      display: block
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin: 0 0 31px
+    }
+
+    .hero-desc strong {
+      color: var(--text);
+      font-weight: 500
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      padding: 13px 21px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      transition: background .2s, transform .2s
+    }
+
+    .button.primary {
+      background: var(--solid);
+      border-color: var(--solid);
+      color: white
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      background: var(--card)
+    }
+
+    .button.primary:hover {
+      background: #164ecc
+    }
+
+    .arrow {
+      font-family: Arial, sans-serif;
+      font-size: 20px
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .hero-bottom a {
+      display: flex;
+      gap: 18px;
+      align-items: center
+    }
+
+    .hero-art {
+      height: 450px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate
+    }
+
+    .orbit {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      transform: rotate(-25deg)
+    }
+
+    .orbit:after {
+      content: '';
+      position: absolute;
+      inset: 25px;
+      border: 1px dashed var(--line);
+      border-radius: 50%
+    }
+
+    .orbit.two {
+      width: 445px;
+      height: 185px;
+      border-color: var(--accent);
+      opacity: .35;
+      transform: rotate(-40deg)
+    }
+
+    .orbit.two:after {
+      display: none
+    }
+
+    .art-word {
+      font-weight: 900;
+      font-size: clamp(125px, 14vw, 205px);
+      letter-spacing: -.12em;
+      line-height: .9;
+      transform: skewY(-10deg);
+      position: relative;
+      color: var(--text);
+      text-shadow: 8px 9px 0 var(--solid);
+      margin-right: 22px
+    }
+
+    .art-word span {
+      display: block
+    }
+
+    .cross {
+      position: absolute;
+      font-family: monospace;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--accent)
+    }
+
+    .cross.one {
+      top: 18px;
+      left: 28px
+    }
+
+    .cross.two {
+      bottom: 14px;
+      right: 6px
+    }
+
+    .art-caption {
+      position: absolute;
+      right: 3px;
+      top: 45px;
+      color: var(--muted);
+      writing-mode: vertical-rl;
+      font-size: 11px;
+      letter-spacing: .16em
+    }
+
+    .art-coordinate {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      color: var(--muted);
+      font-size: 11px
+    }
+
+    .hero-art:before {
+      content: '';
+      position: absolute;
+      inset: 50px;
+      background: radial-gradient(circle, #2362f51a, transparent 66%);
+      z-index: -1
+    }
+
+    .ticker {
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      padding: 21px 0
+    }
+
+    .ticker .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap
+    }
+
+    .ticker span {
+      color: var(--muted);
+      font: 600 17px 'Barlow Condensed', Impact, sans-serif;
+      letter-spacing: .1em
+    }
+
+    .ticker i {
+      font-style: normal;
+      color: var(--accent);
+      font-size: 17px
+    }
+
+    section.content {
+      padding: 104px 0;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .section-title {
+      font-size: clamp(34px, 3.4vw, 50px);
+      letter-spacing: -.045em;
+      line-height: 1.4;
+      margin: 24px 0;
+      font-weight: 800
+    }
+
+    .section-title em {
+      color: var(--accent);
+      font-style: normal
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px
+    }
+
+    .intro-copy {
+      font-size: 17px;
+      color: var(--muted);
+      padding-top: 43px;
+      line-height: 2
+    }
+
+    .intro-copy p {
+      margin-top: 0
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 46px
+    }
+
+    .value {
+      padding-top: 25px;
+      border-top: 1px solid var(--line)
+    }
+
+    .value .mono {
+      color: var(--accent)
+    }
+
+    .value h3 {
+      font-size: 19px;
+      margin: 16px 0 8px
+    }
+
+    .value p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0
+    }
+
+    .research {
+      background: var(--surface)
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: flex-end;
+      margin-bottom: 36px
+    }
+
+    .section-heading .section-title {
+      margin-bottom: 0
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 330px;
+      margin: 0
+    }
+
+    .research-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      border: 1px solid var(--line);
+      min-height: 330px
+    }
+
+    .tabs {
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column
+    }
+
+    .tabs button {
+      background: transparent;
+      text-align: left;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      padding: 22px 26px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 15px;
+      color: var(--muted);
+      flex: 1
+    }
+
+    .tabs button:last-child {
+      border-bottom: 0
+    }
+
+    .tabs button[aria-selected=true] {
+      background: var(--solid);
+      color: white
+    }
+
+    .tabs button span {
+      font: 12px Consolas, monospace;
+      opacity: .7
+    }
+
+    .panel {
+      position: relative;
+      padding: 38px 45px;
+      overflow: hidden
+    }
+
+    .panel h3 {
+      font: 700 46px/1.1 'Barlow Condensed', Impact, sans-serif;
+      margin: 15px 0 18px
+    }
+
+    .panel p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 490px;
+      position: relative;
+      z-index: 1
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 25px
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 3px 10px;
+      font: 12px/1.8 Consolas, monospace
+    }
+
+    .panel-number {
+      position: absolute;
+      right: 25px;
+      bottom: 0;
+      font: 800 190px/.8 'Barlow Condensed', Impact, sans-serif;
+      color: var(--line);
+      opacity: .38;
+      pointer-events: none
+    }
+
+    .panel[hidden] {
+      display: none
+    }
+
+    .sample {
+      border: 1px solid var(--line);
+      padding: 4px 9px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap
+    }
+
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px
+    }
+
+    .activity {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 28px;
+      transition: transform .2s, border-color .2s
+    }
+
+    .activity:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent)
+    }
+
+    .activity-type {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px
+    }
+
+    .activity-visual {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px 0 24px;
+      border-bottom: 1px solid var(--line);
+      font: 700 61px 'Barlow Condensed', Impact, sans-serif;
+      letter-spacing: -.025em;
+      color: var(--accent)
+    }
+
+    .activity:nth-child(2) .activity-visual {
+      color: var(--text)
+    }
+
+    .activity:nth-child(3) .activity-visual {
+      font: 700 49px Consolas, monospace
+    }
+
+    .activity h3 {
+      font-size: 20px;
+      margin: 15px 0 10px
+    }
+
+    .activity p {
+      font-size: 15px;
+      color: var(--muted);
+      margin: 0 0 23px;
+      line-height: 1.85
+    }
+
+    .activity details {
+      border-top: 1px solid var(--line);
+      padding-top: 14px
+    }
+
+    .activity summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 14px;
+      list-style: none
+    }
+
+    .activity summary:after {
+      content: '+';
+      color: var(--accent);
+      font-size: 22px
+    }
+
+    .activity details[open] summary:after {
+      content: '−'
+    }
+
+    .activity details p {
+      font-size: 14px;
+      margin-top: 16px;
+      margin-bottom: 0
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 90px
+    }
+
+    .faq-intro p {
+      font-size: 15px;
+      color: var(--muted)
+    }
+
+    .questions details {
+      border-bottom: 1px solid var(--line);
+      padding: 23px 0
+    }
+
+    .questions details:first-child {
+      border-top: 1px solid var(--line)
+    }
+
+    .questions summary {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      cursor: pointer;
+      list-style: none;
+      font-size: 17px;
+      font-weight: 500
+    }
+
+    .questions summary:after {
+      content: '+';
+      color: var(--accent);
+      font-size: 24px;
+      font-weight: 400
+    }
+
+    .questions details[open] summary:after {
+      content: '−'
+    }
+
+    .questions details p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      margin: 16px 30px 0 0
+    }
+
+    summary::-webkit-details-marker {
+      display: none
+    }
+
+    .closing {
+      padding: 65px 0;
+      background: var(--solid);
+      color: white
+    }
+
+    .closing .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px
+    }
+
+    .closing h2 {
+      font: 700 clamp(40px, 5vw, 70px)/1 'Barlow Condensed', Impact, sans-serif;
+      margin: 0 0 14px
+    }
+
+    .closing p {
+      font-size: 15px;
+      margin: 0;
+      color: #d9e4ff
+    }
+
+    .closing a {
+      flex-shrink: 0;
+      border-color: #ffffff55;
+      background: transparent;
+      color: #fff
+    }
+
+    .closing a:hover {
+      background: #ffffff20
+    }
+
+    footer {
+      padding: 40px 0
+    }
+
+    .footer-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px
+    }
+
+    .footer-main p {
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0
+    }
+
+    .footer-note {
+      border-top: 1px solid var(--line);
+      margin-top: 30px;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 12px;
+      color: var(--muted)
+    }
+
+    @media(min-width:1600px) {
+      .hero-inner {
+        min-height: 750px
+      }
+
+      .hero-art {
+        height: 490px
+      }
+    }
+
+    @media(max-width:1050px) {
+      .wrap {
+        width: calc(100% - 64px)
+      }
+
+      .nav {
+        gap: 22px
+      }
+
+      .brand-ko,
+      .edition {
+        display: none
+      }
+
+      .hero-inner {
+        min-height: 640px
+      }
+
+      .hero-art {
+        height: 380px
+      }
+
+      .orbit {
+        width: 310px;
+        height: 310px
+      }
+
+      .orbit.two {
+        width: 350px;
+        height: 150px
+      }
+
+      .intro-grid,
+      .faq-layout {
+        gap: 45px
+      }
+
+      .research-layout {
+        grid-template-columns: 245px 1fr
+      }
+
+      .activity {
+        padding: 22px
+      }
+
+      .activity-visual {
+        font-size: 49px
+      }
+
+      .activity:nth-child(3) .activity-visual {
+        font-size: 37px
+      }
+    }
+
+    @media(max-width:720px) {
+      html {
+        scroll-padding-top: 84px
+      }
+
+      .wrap {
+        width: calc(100% - 40px)
+      }
+
+      .header {
+        height: 72px
+      }
+
+      .brand-word {
+        font-size: 24px
+      }
+
+      .header .wrap {
+        gap: 16px
+      }
+
+      .header-tools {
+        margin-left: auto
+      }
+
+      .menu {
+        display: block
+      }
+
+      .nav {
+        display: none;
+        position: absolute;
+        top: 71px;
+        left: 0;
+        right: 0;
+        padding: 20px;
+        background: var(--bg);
+        border-bottom: 1px solid var(--line);
+        margin: 0;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px
+      }
+
+      .nav.open {
+        display: flex
+      }
+
+      .nav a {
+        font-size: 14px
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding: 45px 0 68px
+      }
+
+      .hero-tag {
+        font-size: 11px;
+        margin-bottom: 24px
+      }
+
+      h1 {
+        font-size: clamp(76px, 17vw, 120px);
+        line-height: .91;
+        margin-bottom: 22px
+      }
+
+      .hero-desc {
+        font-size: 15px
+      }
+
+      .hero-art {
+        position: absolute;
+        right: -78px;
+        top: 90px;
+        width: 255px;
+        height: 300px;
+        opacity: .14;
+        z-index: -1
+      }
+
+      .art-word {
+        font-size: 145px
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1
+      }
+
+      .orbit {
+        width: 250px;
+        height: 250px
+      }
+
+      .orbit.two {
+        width: 280px;
+        height: 120px
+      }
+
+      .cross,
+      .art-caption,
+      .art-coordinate {
+        display: none
+      }
+
+      .hero-bottom {
+        bottom: 19px;
+        font-size: 10px
+      }
+
+      .hero-bottom>span {
+        max-width: 200px
+      }
+
+      .button {
+        padding: 12px 17px;
+        gap: 23px
+      }
+
+      .ticker {
+        padding: 17px 0
+      }
+
+      .ticker .wrap {
+        justify-content: center;
+        gap: 13px
+      }
+
+      .ticker span {
+        font-size: 14px
+      }
+
+      .ticker i {
+        font-size: 12px
+      }
+
+      .ticker span:last-child,
+      .ticker i:last-of-type {
+        display: none
+      }
+
+      section.content {
+        padding: 66px 0
+      }
+
+      .intro-grid,
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 8px
+      }
+
+      .intro-copy {
+        padding-top: 0;
+        font-size: 16px
+      }
+
+      .section-title {
+        font-size: 34px;
+        margin: 20px 0
+      }
+
+      .values {
+        grid-template-columns: 1fr;
+        margin-top: 26px;
+        gap: 24px
+      }
+
+      .value {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 3px 14px;
+        padding-top: 22px
+      }
+
+      .value .mono {
+        grid-row: span 2;
+        padding-top: 3px
+      }
+
+      .value h3 {
+        margin: 0 0 7px;
+        font-size: 18px
+      }
+
+      .value p {
+        font-size: 14px
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        margin-bottom: 26px
+      }
+
+      .section-heading p {
+        font-size: 14px
+      }
+
+      .research-layout {
+        grid-template-columns: 1fr
+      }
+
+      .tabs {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-right: 0;
+        border-bottom: 1px solid var(--line)
+      }
+
+      .tabs button {
+        flex: auto;
+        width: 50%;
+        padding: 16px;
+        font-size: 14px;
+        border-bottom: 1px solid var(--line)
+      }
+
+      .tabs button:nth-child(odd) {
+        border-right: 1px solid var(--line)
+      }
+
+      .tabs button:nth-last-child(-n+2) {
+        border-bottom: 0
+      }
+
+      .panel {
+        padding: 27px 24px;
+        min-height: 320px
+      }
+
+      .panel h3 {
+        font-size: 40px
+      }
+
+      .panel p {
+        font-size: 15px
+      }
+
+      .panel-number {
+        font-size: 145px
+      }
+
+      .activities {
+        grid-template-columns: 1fr
+      }
+
+      .activity {
+        padding: 24px
+      }
+
+      .activity-visual {
+        height: 120px;
+        margin: 8px 0 15px;
+        font-size: 60px
+      }
+
+      .activity:nth-child(3) .activity-visual {
+        font-size: 46px
+      }
+
+      .faq-layout {
+        gap: 26px
+      }
+
+      .questions summary {
+        font-size: 15px
+      }
+
+      .closing {
+        padding: 43px 0
+      }
+
+      .closing .wrap {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 25px
+      }
+
+      .closing p {
+        font-size: 14px
+      }
+
+      .footer-main {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px
+      }
+
+      .footer-note {
+        flex-direction: column;
+        gap: 8px
+      }
+
+      footer {
+        padding: 30px 0
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *:before,
+      *:after {
+        transition: none !important;
+        animation: none !important
+      }
+    }
   </style>
 </head>
+
 <body>
-<a class="skip" href="#main">본문으로 이동</a>
-<header class="header"><div class="wrap">
-  <a class="brand" href="#main" aria-label="활빈 메인"><span class="brand-symbol" aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko">활빈</span></a>
-  <nav class="nav" id="navigation" aria-label="주요 메뉴"><a href="#about">소개</a><a href="#research">연구 분야</a><a href="#activity">활동</a><a href="#faq">FAQ</a></nav>
-  <div class="header-tools"><span class="edition mono">DEMO / 01</span><button class="theme" type="button" aria-label="밝은 테마로 전환" title="밝은 테마로 전환">☼</button><button class="menu" type="button" aria-expanded="false" aria-controls="navigation">메뉴 +</button></div>
-</div></header>
-<main id="main">
-  <section class="hero" aria-labelledby="hero-title"><div class="wrap hero-inner">
-    <div class="hero-copy"><div class="hero-tag mono">HWALBIN · HACKING TEAM</div><h1 class="condensed" id="hero-title">BEYOND<br>THE <span style="display:inline">LIMIT.</span></h1><p class="hero-desc"><strong>어서 와~ 보안은 처음이지?</strong><br>해킹팀 : Hwalbin<br>국제 CTF 대회 참가 · 버그 바운티 활동</p><div class="actions"><a class="button primary" href="#about">활빈 알아보기 <span class="arrow" aria-hidden="true">↗</span></a><a class="button" href="#activity">활동 둘러보기 <span class="arrow" aria-hidden="true">↗</span></a></div></div>
-    <div class="hero-art" aria-hidden="true"><div class="orbit"></div><div class="orbit two"></div><span class="cross one">+</span><div class="art-word"><span>활</span><span>빈</span></div><span class="cross two">+</span><span class="art-caption mono">CURIOSITY IS OUR SOURCE CODE.</span><span class="art-coordinate mono">[ HWALBIN_IDENTITY / 001 ]</span></div>
-    <div class="hero-bottom mono"><span>THINK DEEPER. BUILD SAFER.</span><a href="#about">SCROLL TO EXPLORE <span class="arrow" aria-hidden="true">↓</span></a></div>
-  </div></section>
-  <div class="ticker" aria-hidden="true"><div class="wrap"><span>WEB SECURITY</span><i>✳</i><span>SYSTEM SECURITY</span><i>✳</i><span>REVERSE ENGINEERING</span><i>✳</i><span>CRYPTOGRAPHY</span><i>✳</i><span>CAPTURE THE FLAG</span></div></div>
-  <section class="content" id="about"><div class="wrap"><div class="eyebrow mono"><span class="no">01 /</span> WHO WE ARE</div><div class="intro-grid"><h2 class="section-title">당연한 것에 질문하고,<br><em>새로운 가능성</em>을 찾습니다.</h2><div class="intro-copy"><p>시스템이 어떻게 작동하는지, 익숙한 기술 안에 무엇이 숨어 있는지. 활빈의 이야기는 작은 호기심에서 시작됩니다.</p><p>활빈은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 문제를 해결하고 취약점을 발견하며, 그 과정에서 얻은 지식을 나누어 더 안전한 내일을 만들어갑니다.</p></div></div><div class="values"><article class="value"><span class="mono">[01]</span><h3>깊이 탐구하는 호기심</h3><p>정답에서 멈추지 않고, 그 뒤의 원리까지.</p></article><article class="value"><span class="mono">[02]</span><h3>기술을 대하는 책임감</h3><p>발견의 가치를 더 안전한 기술로 연결합니다.</p></article><article class="value"><span class="mono">[03]</span><h3>함께 성장하는 문화</h3><p>서로의 질문과 경험이 다음 도전의 시작입니다.</p></article></div></div></section>
-  <section class="content research" id="research"><div class="wrap"><div class="eyebrow mono"><span class="no">02 /</span> WHAT WE EXPLORE</div><div class="section-heading"><h2 class="section-title">표면 너머, <em>기술의 안쪽으로.</em></h2><p>웹부터 시스템, 바이너리와 암호까지.<br>서로 다른 관점으로 보안을 탐구합니다.</p></div><div class="research-layout"><div class="tabs" role="tablist" aria-label="연구 분야" aria-orientation="vertical"><button id="tab-web" role="tab" aria-selected="true" aria-controls="panel-web" tabindex="0">웹 보안 <span>01 ↗</span></button><button id="tab-system" role="tab" aria-selected="false" aria-controls="panel-system" tabindex="-1">시스템 보안 <span>02 ↗</span></button><button id="tab-reverse" role="tab" aria-selected="false" aria-controls="panel-reverse" tabindex="-1">리버스 엔지니어링 <span>03 ↗</span></button><button id="tab-crypto" role="tab" aria-selected="false" aria-controls="panel-crypto" tabindex="-1">암호학 <span>04 ↗</span></button></div>
-      <div class="panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web" tabindex="0"><div class="mono" style="color:var(--accent)">RESEARCH AREA / 01</div><h3>WEB SECURITY</h3><p>브라우저와 서버 사이, 보이지 않는 신뢰의 경계를 살펴봅니다. 웹의 동작 원리를 이해하고 안전한 서비스 설계를 연구합니다.</p><div class="tags"><span class="tag">HTTP</span><span class="tag">Browser</span><span class="tag">Secure Design</span></div><span class="panel-number" aria-hidden="true">01</span></div>
-      <div class="panel" id="panel-system" role="tabpanel" aria-labelledby="tab-system" tabindex="0" hidden><div class="mono" style="color:var(--accent)">RESEARCH AREA / 02</div><h3>SYSTEM SECURITY</h3><p>메모리, 운영체제, 프로그램의 실행 흐름을 탐구합니다. 시스템의 기본 원리와 보호 기법을 학습하며 견고한 소프트웨어를 고민합니다.</p><div class="tags"><span class="tag">Memory</span><span class="tag">Linux</span><span class="tag">Mitigation</span></div><span class="panel-number" aria-hidden="true">02</span></div>
-      <div class="panel" id="panel-reverse" role="tabpanel" aria-labelledby="tab-reverse" tabindex="0" hidden><div class="mono" style="color:var(--accent)">RESEARCH AREA / 03</div><h3>REVERSE ENGINEERING</h3><p>완성된 프로그램에서 설계와 동작 원리를 읽어냅니다. 바이너리와 실행 흐름을 분석하며 코드가 들려주는 이야기를 이해합니다.</p><div class="tags"><span class="tag">Assembly</span><span class="tag">Binary Analysis</span><span class="tag">Debugging</span></div><span class="panel-number" aria-hidden="true">03</span></div>
-      <div class="panel" id="panel-crypto" role="tabpanel" aria-labelledby="tab-crypto" tabindex="0" hidden><div class="mono" style="color:var(--accent)">RESEARCH AREA / 04</div><h3>CRYPTOGRAPHY</h3><p>수학으로 지키는 정보의 비밀을 탐구합니다. 암호 알고리즘과 프로토콜의 원리를 배우고, 안전한 구현에 필요한 조건을 살펴봅니다.</p><div class="tags"><span class="tag">Mathematics</span><span class="tag">Protocols</span><span class="tag">Encryption</span></div><span class="panel-number" aria-hidden="true">04</span></div>
-    </div></div></section>
-  <section class="content" id="activity"><div class="wrap"><div class="eyebrow mono"><span class="no">03 /</span> INSIDE HWALBIN</div><div class="section-heading"><h2 class="section-title">질문은 <em>행동으로 이어집니다.</em></h2><span class="sample">국제 CTF · 버그 바운티</span></div><div class="activities"><article class="activity"><div class="activity-type mono"><span>01 / CHALLENGE</span><span>CTF</span></div><div class="activity-visual" aria-hidden="true">CAPTURE THE FLAG.</div><h3>국제 CTF 대회 참가</h3><p>국제 CTF 대회에서 팀의 강점을 모아 문제를 풀고, 대회가 끝나면 풀이와 배움을 나눕니다.</p><details><summary>국제 CTF 활동 알아보기</summary><p>국제 해킹 대회인 CTF(Capture The Flag)에 팀으로 참가합니다. 다양한 보안 문제에 도전하며 실전 역량과 협업 능력을 키웁니다.</p></details></article><article class="activity"><div class="activity-type mono"><span>02 / KNOWLEDGE</span><span>STUDY</span></div><div class="activity-visual" aria-hidden="true">LEARN. SHARE. REPEAT.</div><h3>혼자의 발견을 모두의 지식으로</h3><p>기초부터 깊이 있는 주제까지,<br>함께 공부하고 서로의 관점을 배웁니다.</p><details><summary>스터디 알아보기</summary><p>분야별 스터디와 기술 세미나를 소개하는 공간입니다. 실제 운영 주제, 일정, 공개 자료가 준비되면 이곳에서 안내합니다.</p></details></article><article class="activity"><div class="activity-type mono"><span>03 / RESEARCH</span><span>BUG BOUNTY</span></div><div class="activity-visual" aria-hidden="true">{ next_ }</div><h3>버그 바운티 활동</h3><p>실제 서비스의 취약점을 발견하고 제보하며, 보안 연구를 더 안전한 서비스로 연결합니다.</p><details><summary>버그 바운티 알아보기</summary><p>버그 바운티 프로그램의 허용 범위 안에서 취약점을 탐구하고, 발견한 내용을 해당 서비스에 책임 있게 제보합니다.</p></details></article></div></div></section>
-  <section class="content" id="faq"><div class="wrap faq-layout"><div class="faq-intro"><div class="eyebrow mono"><span class="no">04 /</span> QUESTIONS</div><h2 class="section-title">활빈이 <em>궁금하다면.</em></h2><p>팀 소개와 참여에 관한 안내입니다.</p></div><div class="questions"><details open><summary>활빈은 어떤 팀인가요?</summary><p>활빈(Hwalbin)은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 보안 문제를 해결하고 실제 서비스의 취약점을 탐구하며, 경험과 지식을 나눕니다.</p></details><details><summary>어떤 분야를 다루나요?</summary><p>데모에서는 웹 보안, 시스템 보안, 리버스 엔지니어링, 암호학으로 구성했습니다. 실제 팀의 연구 방향에 맞게 분야를 조정할 수 있습니다.</p></details><details><summary>팀에 지원할 수 있나요?</summary><p>현재 이 데모에서는 지원을 받지 않습니다. 모집 여부와 지원 자격, 일정은 팀의 공식 안내가 준비된 후 공개됩니다.</p></details><details><summary>협업이나 문의는 어디로 하나요?</summary><p>공식 문의 채널은 준비 중입니다. 팀에서 확인한 이메일 또는 소셜 채널이 제공되면 이곳에 연결됩니다.</p></details></div></div></section>
-  <section class="closing"><div class="wrap"><div><h2>THE NEXT CHAPTER IS OURS.</h2><p>다음 가능성을 여는 이름, 활빈.</p></div><a class="button" href="#main">처음으로 돌아가기 <span class="arrow" aria-hidden="true">↑</span></a></div></section>
-</main>
-<footer><div class="wrap"><div class="footer-main"><a class="brand" href="#main" aria-label="활빈 메인"><span class="brand-symbol" aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko">활빈</span></a><p>© 2026 Hwalbin. All rights reserved.</p></div><div class="footer-note"><span>디자인 데모 · 세부 활동 기록과 공식 안내는 추후 추가 예정입니다.</span><span class="mono">BUILT ON CURIOSITY.</span></div></div></footer>
-<script>
-  (()=>{
-    const root=document.documentElement,theme=document.querySelector('.theme');
-    function setTheme(value){root.dataset.theme=value;const label=value==='dark'?'밝은 테마로 전환':'어두운 테마로 전환';theme.setAttribute('aria-label',label);theme.title=label;theme.textContent=value==='dark'?'☼':'☾';document.querySelector('meta[name="theme-color"]').content=value==='dark'?'#0b0d11':'#f5f6fa';}
-    try{const saved=localStorage.getItem('hwalbin-theme');if(saved==='light'||saved==='dark')setTheme(saved)}catch(e){}
-    theme.addEventListener('click',()=>{const value=root.dataset.theme==='dark'?'light':'dark';setTheme(value);try{localStorage.setItem('hwalbin-theme',value)}catch(e){}});
-    const menu=document.querySelector('.menu'),nav=document.querySelector('.nav');function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='메뉴 +'}
-    menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.textContent=open?'닫기 −':'메뉴 +'});
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nav.classList.contains('open')){closeMenu();menu.focus()}});
-    const tabs=[...document.querySelectorAll('[role="tab"]')];function activate(tab,focus=false){tabs.forEach(t=>{const selected=t===tab;t.setAttribute('aria-selected',String(selected));t.tabIndex=selected?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!selected});if(focus)tab.focus()}
-    tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>activate(tab));tab.addEventListener('keydown',e=>{let next;if(e.key==='ArrowDown'||e.key==='ArrowRight')next=(i+1)%tabs.length;if(e.key==='ArrowUp'||e.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;if(e.key==='Home')next=0;if(e.key==='End')next=tabs.length-1;if(next!==undefined){e.preventDefault();activate(tabs[next],true)}})});
-    const links=[...nav.querySelectorAll('a')];if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(link=>{const active=link.hash==='#'+entry.target.id;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}})},{rootMargin:'-15% 0px -60% 0px',threshold:0});document.querySelectorAll('section[id]').forEach(s=>observer.observe(s))}
-  })();
-</script>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="#main" aria-label="활빈 메인"><span class="brand-symbol" aria-hidden="true">H</span><span
+          class="brand-word">HWALBIN</span><span class="brand-ko">활빈</span></a>
+      <nav class="nav" id="navigation" aria-label="주요 메뉴"><a href="#about">소개</a><a href="#research">연구 분야</a><a
+          href="#activity">활동</a><a href="#faq">FAQ</a></nav>
+      <div class="header-tools"><span class="edition mono">DEMO / 01</span><button class="theme" type="button"
+          aria-label="밝은 테마로 전환" title="밝은 테마로 전환">☼</button><button class="menu" type="button" aria-expanded="false"
+          aria-controls="navigation">메뉴 +</button></div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <div class="hero-tag mono">HWALBIN · HACKING TEAM</div>
+          <h1 class="condensed" id="hero-title">BEYOND<br>THE <span style="display:inline">LIMIT.</span></h1>
+          <p class="hero-desc"><strong>어서 와~ 보안은 처음이지?</strong><br>해킹팀 : Hwalbin<br>국제 CTF 대회 참가 · 버그 바운티 활동</p>
+          <div class="actions"><a class="button primary" href="#about">활빈 알아보기 <span class="arrow"
+                aria-hidden="true">↗</span></a><a class="button" href="#activity">활동 둘러보기 <span class="arrow"
+                aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div>
+          <div class="orbit two"></div><span class="cross one">+</span>
+          <div class="art-word"><span>활</span><span>빈</span></div><span class="cross two">+</span><span
+            class="art-caption mono">CURIOSITY IS OUR SOURCE CODE.</span><span class="art-coordinate mono">[
+            HWALBIN_IDENTITY / 001 ]</span>
+        </div>
+        <div class="hero-bottom mono"><span>THINK DEEPER. BUILD SAFER.</span><a href="#about">SCROLL TO EXPLORE <span
+              class="arrow" aria-hidden="true">↓</span></a></div>
+      </div>
+    </section>
+    <div class="ticker" aria-hidden="true">
+      <div class="wrap"><span>WEB SECURITY</span><i>✳</i><span>SYSTEM SECURITY</span><i>✳</i><span>REVERSE
+          ENGINEERING</span><i>✳</i><span>CRYPTOGRAPHY</span><i>✳</i><span>CAPTURE THE FLAG</span></div>
+    </div>
+    <section class="content" id="about">
+      <div class="wrap">
+        <div class="eyebrow mono"><span class="no">01 /</span> WHO WE ARE</div>
+        <div class="intro-grid">
+          <h2 class="section-title">당연한 것에 질문하고,<br><em>새로운 가능성</em>을 찾습니다.</h2>
+          <div class="intro-copy">
+            <p>시스템이 어떻게 작동하는지, 익숙한 기술 안에 무엇이 숨어 있는지. 활빈의 이야기는 작은 호기심에서 시작됩니다.</p>
+            <p>활빈은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 문제를 해결하고 취약점을 발견하며, 그 과정에서 얻은 지식을 나누어 더 안전한 내일을 만들어갑니다.</p>
+          </div>
+        </div>
+        <div class="values">
+          <article class="value"><span class="mono">[01]</span>
+            <h3>깊이 탐구하는 호기심</h3>
+            <p>정답에서 멈추지 않고, 그 뒤의 원리까지.</p>
+          </article>
+          <article class="value"><span class="mono">[02]</span>
+            <h3>기술을 대하는 책임감</h3>
+            <p>발견의 가치를 더 안전한 기술로 연결합니다.</p>
+          </article>
+          <article class="value"><span class="mono">[03]</span>
+            <h3>함께 성장하는 문화</h3>
+            <p>서로의 질문과 경험이 다음 도전의 시작입니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="content research" id="research">
+      <div class="wrap">
+        <div class="eyebrow mono"><span class="no">02 /</span> WHAT WE EXPLORE</div>
+        <div class="section-heading">
+          <h2 class="section-title">표면 너머, <em>기술의 안쪽으로.</em></h2>
+          <p>웹부터 시스템, 바이너리와 암호까지.<br>서로 다른 관점으로 보안을 탐구합니다.</p>
+        </div>
+        <div class="research-layout">
+          <div class="tabs" role="tablist" aria-label="연구 분야" aria-orientation="vertical"><button id="tab-web"
+              role="tab" aria-selected="true" aria-controls="panel-web" tabindex="0">웹 보안 <span>01
+                ↗</span></button><button id="tab-system" role="tab" aria-selected="false" aria-controls="panel-system"
+              tabindex="-1">시스템 보안 <span>02 ↗</span></button><button id="tab-reverse" role="tab" aria-selected="false"
+              aria-controls="panel-reverse" tabindex="-1">리버스 엔지니어링 <span>03 ↗</span></button><button id="tab-crypto"
+              role="tab" aria-selected="false" aria-controls="panel-crypto" tabindex="-1">암호학 <span>04 ↗</span></button>
+          </div>
+          <div class="panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web" tabindex="0">
+            <div class="mono" style="color:var(--accent)">RESEARCH AREA / 01</div>
+            <h3>WEB SECURITY</h3>
+            <p>브라우저와 서버 사이, 보이지 않는 신뢰의 경계를 살펴봅니다. 웹의 동작 원리를 이해하고 안전한 서비스 설계를 연구합니다.</p>
+            <div class="tags"><span class="tag">HTTP</span><span class="tag">Browser</span><span class="tag">Secure
+                Design</span></div><span class="panel-number" aria-hidden="true">01</span>
+          </div>
+          <div class="panel" id="panel-system" role="tabpanel" aria-labelledby="tab-system" tabindex="0" hidden>
+            <div class="mono" style="color:var(--accent)">RESEARCH AREA / 02</div>
+            <h3>SYSTEM SECURITY</h3>
+            <p>메모리, 운영체제, 프로그램의 실행 흐름을 탐구합니다. 시스템의 기본 원리와 보호 기법을 학습하며 견고한 소프트웨어를 고민합니다.</p>
+            <div class="tags"><span class="tag">Memory</span><span class="tag">Linux</span><span
+                class="tag">Mitigation</span></div><span class="panel-number" aria-hidden="true">02</span>
+          </div>
+          <div class="panel" id="panel-reverse" role="tabpanel" aria-labelledby="tab-reverse" tabindex="0" hidden>
+            <div class="mono" style="color:var(--accent)">RESEARCH AREA / 03</div>
+            <h3>REVERSE ENGINEERING</h3>
+            <p>완성된 프로그램에서 설계와 동작 원리를 읽어냅니다. 바이너리와 실행 흐름을 분석하며 코드가 들려주는 이야기를 이해합니다.</p>
+            <div class="tags"><span class="tag">Assembly</span><span class="tag">Binary Analysis</span><span
+                class="tag">Debugging</span></div><span class="panel-number" aria-hidden="true">03</span>
+          </div>
+          <div class="panel" id="panel-crypto" role="tabpanel" aria-labelledby="tab-crypto" tabindex="0" hidden>
+            <div class="mono" style="color:var(--accent)">RESEARCH AREA / 04</div>
+            <h3>CRYPTOGRAPHY</h3>
+            <p>수학으로 지키는 정보의 비밀을 탐구합니다. 암호 알고리즘과 프로토콜의 원리를 배우고, 안전한 구현에 필요한 조건을 살펴봅니다.</p>
+            <div class="tags"><span class="tag">Mathematics</span><span class="tag">Protocols</span><span
+                class="tag">Encryption</span></div><span class="panel-number" aria-hidden="true">04</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="content" id="activity">
+      <div class="wrap">
+        <div class="eyebrow mono"><span class="no">03 /</span> INSIDE HWALBIN</div>
+        <div class="section-heading">
+          <h2 class="section-title">질문은 <em>행동으로 이어집니다.</em></h2><span class="sample">국제 CTF · 버그 바운티</span>
+        </div>
+        <div class="activities">
+          <article class="activity">
+            <div class="activity-type mono"><span>01 / CHALLENGE</span><span>CTF</span></div>
+            <div class="activity-visual" aria-hidden="true">CAPTURE THE FLAG.</div>
+            <h3>국제 CTF 대회 참가</h3>
+            <p>국제 CTF 대회에서 팀의 강점을 모아 문제를 풀고, 대회가 끝나면 풀이와 배움을 나눕니다.</p>
+            <p><a class="button" href="https://ctftime.org/team/304129" target="_blank" rel="noopener noreferrer"
+                aria-label="CTFtime 팀 프로필 (새 탭)">CTFtime 팀 프로필 <span class="arrow" aria-hidden="true">↗</span></a></p>
+            <details>
+              <summary>국제 CTF 활동 알아보기</summary>
+              <p>국제 해킹 대회인 CTF(Capture The Flag)에 팀으로 참가합니다. 다양한 보안 문제에 도전하며 실전 역량과 협업 능력을 키웁니다.</p>
+            </details>
+          </article>
+          <article class="activity">
+            <div class="activity-type mono"><span>02 / KNOWLEDGE</span><span>STUDY</span></div>
+            <div class="activity-visual" aria-hidden="true">LEARN. SHARE. REPEAT.</div>
+            <h3>혼자의 발견을 모두의 지식으로</h3>
+            <p>기초부터 깊이 있는 주제까지,<br>함께 공부하고 서로의 관점을 배웁니다.</p>
+            <details>
+              <summary>스터디 알아보기</summary>
+              <p>분야별 스터디와 기술 세미나를 소개하는 공간입니다. 실제 운영 주제, 일정, 공개 자료가 준비되면 이곳에서 안내합니다.</p>
+            </details>
+          </article>
+          <article class="activity">
+            <div class="activity-type mono"><span>03 / RESEARCH</span><span>BUG BOUNTY</span></div>
+            <div class="activity-visual" aria-hidden="true">{ next_ }</div>
+            <h3>버그 바운티 활동</h3>
+            <p>실제 서비스의 취약점을 발견하고 제보하며, 보안 연구를 더 안전한 서비스로 연결합니다.</p>
+            <details>
+              <summary>버그 바운티 알아보기</summary>
+              <p>버그 바운티 프로그램의 허용 범위 안에서 취약점을 탐구하고, 발견한 내용을 해당 서비스에 책임 있게 제보합니다.</p>
+            </details>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="content" id="faq">
+      <div class="wrap faq-layout">
+        <div class="faq-intro">
+          <div class="eyebrow mono"><span class="no">04 /</span> QUESTIONS</div>
+          <h2 class="section-title">활빈이 <em>궁금하다면.</em></h2>
+          <p>팀 소개와 참여에 관한 안내입니다.</p>
+        </div>
+        <div class="questions">
+          <details open>
+            <summary>활빈은 어떤 팀인가요?</summary>
+            <p>활빈(Hwalbin)은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 보안 문제를 해결하고 실제 서비스의 취약점을 탐구하며, 경험과 지식을 나눕니다.</p>
+          </details>
+          <details>
+            <summary>어떤 분야를 다루나요?</summary>
+            <p>데모에서는 웹 보안, 시스템 보안, 리버스 엔지니어링, 암호학으로 구성했습니다. 실제 팀의 연구 방향에 맞게 분야를 조정할 수 있습니다.</p>
+          </details>
+          <details>
+            <summary>팀에 지원할 수 있나요?</summary>
+            <p>현재 이 데모에서는 지원을 받지 않습니다. 모집 여부와 지원 자격, 일정은 팀의 공식 안내가 준비된 후 공개됩니다.</p>
+          </details>
+          <details>
+            <summary>협업이나 문의는 어디로 하나요?</summary>
+            <p>공식 문의 채널은 준비 중입니다. 팀에서 확인한 이메일 또는 소셜 채널이 제공되면 이곳에 연결됩니다.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="closing">
+      <div class="wrap">
+        <div>
+          <h2>THE NEXT CHAPTER IS OURS.</h2>
+          <p>다음 가능성을 여는 이름, 활빈.</p>
+        </div><a class="button" href="#main">처음으로 돌아가기 <span class="arrow" aria-hidden="true">↑</span></a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="footer-main"><a class="brand" href="#main" aria-label="활빈 메인"><span class="brand-symbol"
+            aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko">활빈</span></a>
+        <p>© 2026 Hwalbin. All rights reserved.</p>
+      </div>
+      <div class="footer-note"><span>디자인 데모 · <a href="https://ctftime.org/team/304129" target="_blank"
+            rel="noopener noreferrer" aria-label="CTFtime에서 활빈 활동 기록 보기 (새 탭)"
+            style="text-decoration:underline;text-underline-offset:3px">CTFtime에서 활동 기록 보기 ↗</a></span><span
+          class="mono">BUILT ON CURIOSITY.</span></div>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const root = document.documentElement, theme = document.querySelector('.theme');
+      function setTheme(value) { root.dataset.theme = value; const label = value === 'dark' ? '밝은 테마로 전환' : '어두운 테마로 전환'; theme.setAttribute('aria-label', label); theme.title = label; theme.textContent = value === 'dark' ? '☼' : '☾'; document.querySelector('meta[name="theme-color"]').content = value === 'dark' ? '#0b0d11' : '#f5f6fa'; }
+      try { const saved = localStorage.getItem('hwalbin-theme'); if (saved === 'light' || saved === 'dark') setTheme(saved) } catch (e) { }
+      theme.addEventListener('click', () => { const value = root.dataset.theme === 'dark' ? 'light' : 'dark'; setTheme(value); try { localStorage.setItem('hwalbin-theme', value) } catch (e) { } });
+      const menu = document.querySelector('.menu'), nav = document.querySelector('.nav'); function closeMenu() { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); menu.textContent = '메뉴 +' }
+      menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); menu.textContent = open ? '닫기 −' : '메뉴 +' });
+      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu)); document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); menu.focus() } });
+      const tabs = [...document.querySelectorAll('[role="tab"]')]; function activate(tab, focus = false) { tabs.forEach(t => { const selected = t === tab; t.setAttribute('aria-selected', String(selected)); t.tabIndex = selected ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !selected }); if (focus) tab.focus() }
+      tabs.forEach((tab, i) => { tab.addEventListener('click', () => activate(tab)); tab.addEventListener('keydown', e => { let next; if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % tabs.length; if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i + tabs.length - 1) % tabs.length; if (e.key === 'Home') next = 0; if (e.key === 'End') next = tabs.length - 1; if (next !== undefined) { e.preventDefault(); activate(tabs[next], true) } }) });
+      const links = [...nav.querySelectorAll('a')]; if ('IntersectionObserver' in window) { const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { links.forEach(link => { const active = link.hash === '#' + entry.target.id; link.classList.toggle('active', active); if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current') }) } }) }, { rootMargin: '-15% 0px -60% 0px', threshold: 0 }); document.querySelectorAll('section[id]').forEach(s => observer.observe(s)) }
+    })();
+  </script>
 </body>
+
 </html>
