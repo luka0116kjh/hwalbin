@@ -224,6 +224,24 @@
       font-size: 19px
     }
 
+    .language {
+      min-width: 40px;
+      height: 36px;
+      padding: 0 8px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: transparent;
+      font: 700 12px/1 Arial, sans-serif;
+      letter-spacing: .04em
+    }
+
+    .language:hover { border-color: var(--accent); color: var(--accent) }
+    .language[hidden] { display: none }
+    html[lang=en] body { word-break: normal; overflow-wrap: break-word }
+    .tabs button { gap: 12px }
+    .tabs button > span[data-i18n] { font: inherit; opacity: 1 }
+
+
     .edition {
       font-size: 11px;
       letter-spacing: .12em;
@@ -1237,6 +1255,15 @@
       }
     }
 
+    @media(max-width:380px) {
+      .header .wrap { gap: 8px }
+      .header-tools { gap: 6px }
+      .header .brand { gap: 7px }
+      .header .brand-word { font-size: 21px }
+      .header .brand-symbol { width: 28px; height: 28px }
+      .menu { padding: 0 }
+    }
+
     @media(prefers-reduced-motion:reduce) {
       html {
         scroll-behavior: auto
@@ -1253,14 +1280,14 @@
 </head>
 
 <body>
-  <a class="skip" href="#main">본문으로 이동</a>
+  <a class="skip" href="#main"><span data-i18n="skip">본문으로 이동</span></a>
   <header class="header">
     <div class="wrap">
-      <a class="brand" href="#main" aria-label="활빈 메인"><span class="brand-symbol" aria-hidden="true">H</span><span
-          class="brand-word">HWALBIN</span><span class="brand-ko">활빈</span></a>
-      <nav class="nav" id="navigation" aria-label="주요 메뉴"><a href="#about">소개</a><a href="#research">연구 분야</a><a
-          href="#activity">활동</a><a href="#faq">FAQ</a></nav>
-      <div class="header-tools"><span class="edition mono">DEMO / 01</span><button class="theme" type="button"
+      <a class="brand" href="#main" data-i18n-label="homeLabel" aria-label="활빈 메인"><span class="brand-symbol" aria-hidden="true">H</span><span
+          class="brand-word">HWALBIN</span><span class="brand-ko" lang="ko">활빈</span></a>
+      <nav class="nav" id="navigation" data-i18n-label="navLabel" aria-label="주요 메뉴"><a href="#about"><span data-i18n="navAbout">소개</span></a><a href="#research"><span data-i18n="navResearch">연구 분야</span></a><a
+          href="#activity"><span data-i18n="navActivity">활동</span></a><a href="#faq">FAQ</a></nav>
+      <div class="header-tools"><span class="edition mono">DEMO / 01</span><button class="language" type="button" aria-label="Switch to English" title="Switch to English" lang="en" hidden>EN</button><button class="theme" type="button"
           aria-label="밝은 테마로 전환" title="밝은 테마로 전환">☼</button><button class="menu" type="button" aria-expanded="false"
           aria-controls="navigation">메뉴 +</button></div>
     </div>
@@ -1271,9 +1298,9 @@
         <div class="hero-copy">
           <div class="hero-tag mono">HWALBIN · HACKING TEAM</div>
           <h1 class="condensed" id="hero-title">BEYOND<br>THE <span style="display:inline">LIMIT.</span></h1>
-          <p class="hero-desc"><strong>어서 와~ 보안은 처음이지?</strong><br>해킹팀 : Hwalbin<br>국제 CTF 대회 참가 · 버그 바운티 활동</p>
-          <div class="actions"><a class="button primary" href="#about">활빈 알아보기 <span class="arrow"
-                aria-hidden="true">↗</span></a><a class="button" href="#activity">활동 둘러보기 <span class="arrow"
+          <p class="hero-desc"><span data-i18n="hero"><strong>어서 와~ 보안은 처음이지?</strong><br>해킹팀 : Hwalbin<br>국제 CTF 대회 참가 · 버그 바운티 활동</span></p>
+          <div class="actions"><a class="button primary" href="#about"><span data-i18n="exploreAbout">활빈 알아보기</span> <span class="arrow"
+                aria-hidden="true">↗</span></a><a class="button" href="#activity"><span data-i18n="exploreActivities">활동 둘러보기</span> <span class="arrow"
                 aria-hidden="true">↗</span></a></div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -1295,24 +1322,24 @@
       <div class="wrap">
         <div class="eyebrow mono"><span class="no">01 /</span> WHO WE ARE</div>
         <div class="intro-grid">
-          <h2 class="section-title">당연한 것에 질문하고,<br><em>새로운 가능성</em>을 찾습니다.</h2>
+          <h2 class="section-title"><span data-i18n="aboutTitle">당연한 것에 질문하고,<br><em>새로운 가능성</em>을 찾습니다.</span></h2>
           <div class="intro-copy">
-            <p>시스템이 어떻게 작동하는지, 익숙한 기술 안에 무엇이 숨어 있는지. 활빈의 이야기는 작은 호기심에서 시작됩니다.</p>
-            <p>활빈은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 문제를 해결하고 취약점을 발견하며, 그 과정에서 얻은 지식을 나누어 더 안전한 내일을 만들어갑니다.</p>
+            <p><span data-i18n="aboutCuriosity">시스템이 어떻게 작동하는지, 익숙한 기술 안에 무엇이 숨어 있는지. 활빈의 이야기는 작은 호기심에서 시작됩니다.</span></p>
+            <p><span data-i18n="aboutTeam">활빈은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 문제를 해결하고 취약점을 발견하며, 그 과정에서 얻은 지식을 나누어 더 안전한 내일을 만들어갑니다.</span></p>
           </div>
         </div>
         <div class="values">
           <article class="value"><span class="mono">[01]</span>
-            <h3>깊이 탐구하는 호기심</h3>
-            <p>정답에서 멈추지 않고, 그 뒤의 원리까지.</p>
+            <h3><span data-i18n="valueCuriosity">깊이 탐구하는 호기심</span></h3>
+            <p><span data-i18n="valueCuriosityDesc">정답에서 멈추지 않고, 그 뒤의 원리까지.</span></p>
           </article>
           <article class="value"><span class="mono">[02]</span>
-            <h3>기술을 대하는 책임감</h3>
-            <p>발견의 가치를 더 안전한 기술로 연결합니다.</p>
+            <h3><span data-i18n="valueResponsibility">기술을 대하는 책임감</span></h3>
+            <p><span data-i18n="valueResponsibilityDesc">발견의 가치를 더 안전한 기술로 연결합니다.</span></p>
           </article>
           <article class="value"><span class="mono">[03]</span>
-            <h3>함께 성장하는 문화</h3>
-            <p>서로의 질문과 경험이 다음 도전의 시작입니다.</p>
+            <h3><span data-i18n="valueTogether">함께 성장하는 문화</span></h3>
+            <p><span data-i18n="valueTogetherDesc">서로의 질문과 경험이 다음 도전의 시작입니다.</span></p>
           </article>
         </div>
       </div>
@@ -1321,42 +1348,42 @@
       <div class="wrap">
         <div class="eyebrow mono"><span class="no">02 /</span> WHAT WE EXPLORE</div>
         <div class="section-heading">
-          <h2 class="section-title">표면 너머, <em>기술의 안쪽으로.</em></h2>
-          <p>웹부터 시스템, 바이너리와 암호까지.<br>서로 다른 관점으로 보안을 탐구합니다.</p>
+          <h2 class="section-title"><span data-i18n="researchTitle">표면 너머, <em>기술의 안쪽으로.</em></span></h2>
+          <p><span data-i18n="researchIntro">웹부터 시스템, 바이너리와 암호까지.<br>서로 다른 관점으로 보안을 탐구합니다.</span></p>
         </div>
         <div class="research-layout">
-          <div class="tabs" role="tablist" aria-label="연구 분야" aria-orientation="vertical"><button id="tab-web"
-              role="tab" aria-selected="true" aria-controls="panel-web" tabindex="0">웹 보안 <span>01
+          <div class="tabs" role="tablist" data-i18n-label="researchLabel" aria-label="연구 분야" aria-orientation="vertical"><button id="tab-web"
+              role="tab" aria-selected="true" aria-controls="panel-web" tabindex="0"><span data-i18n="webTab">웹 보안</span> <span>01
                 ↗</span></button><button id="tab-system" role="tab" aria-selected="false" aria-controls="panel-system"
-              tabindex="-1">시스템 보안 <span>02 ↗</span></button><button id="tab-reverse" role="tab" aria-selected="false"
-              aria-controls="panel-reverse" tabindex="-1">리버스 엔지니어링 <span>03 ↗</span></button><button id="tab-crypto"
-              role="tab" aria-selected="false" aria-controls="panel-crypto" tabindex="-1">암호학 <span>04 ↗</span></button>
+              tabindex="-1"><span data-i18n="systemTab">시스템 보안</span> <span>02 ↗</span></button><button id="tab-reverse" role="tab" aria-selected="false"
+              aria-controls="panel-reverse" tabindex="-1"><span data-i18n="reverseTab">리버스 엔지니어링</span> <span>03 ↗</span></button><button id="tab-crypto"
+              role="tab" aria-selected="false" aria-controls="panel-crypto" tabindex="-1"><span data-i18n="cryptoTab">암호학</span> <span>04 ↗</span></button>
           </div>
           <div class="panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web" tabindex="0">
             <div class="mono" style="color:var(--accent)">RESEARCH AREA / 01</div>
             <h3>WEB SECURITY</h3>
-            <p>브라우저와 서버 사이, 보이지 않는 신뢰의 경계를 살펴봅니다. 웹의 동작 원리를 이해하고 안전한 서비스 설계를 연구합니다.</p>
+            <p><span data-i18n="webDesc">브라우저와 서버 사이, 보이지 않는 신뢰의 경계를 살펴봅니다. 웹의 동작 원리를 이해하고 안전한 서비스 설계를 연구합니다.</span></p>
             <div class="tags"><span class="tag">HTTP</span><span class="tag">Browser</span><span class="tag">Secure
                 Design</span></div><span class="panel-number" aria-hidden="true">01</span>
           </div>
           <div class="panel" id="panel-system" role="tabpanel" aria-labelledby="tab-system" tabindex="0" hidden>
             <div class="mono" style="color:var(--accent)">RESEARCH AREA / 02</div>
             <h3>SYSTEM SECURITY</h3>
-            <p>메모리, 운영체제, 프로그램의 실행 흐름을 탐구합니다. 시스템의 기본 원리와 보호 기법을 학습하며 견고한 소프트웨어를 고민합니다.</p>
+            <p><span data-i18n="systemDesc">메모리, 운영체제, 프로그램의 실행 흐름을 탐구합니다. 시스템의 기본 원리와 보호 기법을 학습하며 견고한 소프트웨어를 고민합니다.</span></p>
             <div class="tags"><span class="tag">Memory</span><span class="tag">Linux</span><span
                 class="tag">Mitigation</span></div><span class="panel-number" aria-hidden="true">02</span>
           </div>
           <div class="panel" id="panel-reverse" role="tabpanel" aria-labelledby="tab-reverse" tabindex="0" hidden>
             <div class="mono" style="color:var(--accent)">RESEARCH AREA / 03</div>
             <h3>REVERSE ENGINEERING</h3>
-            <p>완성된 프로그램에서 설계와 동작 원리를 읽어냅니다. 바이너리와 실행 흐름을 분석하며 코드가 들려주는 이야기를 이해합니다.</p>
+            <p><span data-i18n="reverseDesc">완성된 프로그램에서 설계와 동작 원리를 읽어냅니다. 바이너리와 실행 흐름을 분석하며 코드가 들려주는 이야기를 이해합니다.</span></p>
             <div class="tags"><span class="tag">Assembly</span><span class="tag">Binary Analysis</span><span
                 class="tag">Debugging</span></div><span class="panel-number" aria-hidden="true">03</span>
           </div>
           <div class="panel" id="panel-crypto" role="tabpanel" aria-labelledby="tab-crypto" tabindex="0" hidden>
             <div class="mono" style="color:var(--accent)">RESEARCH AREA / 04</div>
             <h3>CRYPTOGRAPHY</h3>
-            <p>수학으로 지키는 정보의 비밀을 탐구합니다. 암호 알고리즘과 프로토콜의 원리를 배우고, 안전한 구현에 필요한 조건을 살펴봅니다.</p>
+            <p><span data-i18n="cryptoDesc">수학으로 지키는 정보의 비밀을 탐구합니다. 암호 알고리즘과 프로토콜의 원리를 배우고, 안전한 구현에 필요한 조건을 살펴봅니다.</span></p>
             <div class="tags"><span class="tag">Mathematics</span><span class="tag">Protocols</span><span
                 class="tag">Encryption</span></div><span class="panel-number" aria-hidden="true">04</span>
           </div>
@@ -1367,39 +1394,39 @@
       <div class="wrap">
         <div class="eyebrow mono"><span class="no">03 /</span> INSIDE HWALBIN</div>
         <div class="section-heading">
-          <h2 class="section-title">질문은 <em>행동으로 이어집니다.</em></h2><span class="sample">국제 CTF · 버그 바운티</span>
+          <h2 class="section-title"><span data-i18n="activityTitle">질문은 <em>행동으로 이어집니다.</em></span></h2><span class="sample"><span data-i18n="activityBadge">국제 CTF · 버그 바운티</span></span>
         </div>
         <div class="activities">
           <article class="activity">
             <div class="activity-type mono"><span>01 / CHALLENGE</span><span>CTF</span></div>
             <div class="activity-visual" aria-hidden="true">CAPTURE THE FLAG.</div>
-            <h3>국제 CTF 대회 참가</h3>
-            <p>국제 CTF 대회에서 팀의 강점을 모아 문제를 풀고, 대회가 끝나면 풀이와 배움을 나눕니다.</p>
+            <h3><span data-i18n="ctfTitle">국제 CTF 대회 참가</span></h3>
+            <p><span data-i18n="ctfDesc">국제 CTF 대회에서 팀의 강점을 모아 문제를 풀고, 대회가 끝나면 풀이와 배움을 나눕니다.</span></p>
             <p><a class="button" href="https://ctftime.org/team/304129" target="_blank" rel="noopener noreferrer"
-                aria-label="CTFtime 팀 프로필 (새 탭)">CTFtime 팀 프로필 <span class="arrow" aria-hidden="true">↗</span></a></p>
+                data-i18n-label="ctfLabel" aria-label="CTFtime 팀 프로필 (새 탭)"><span data-i18n="ctfLink">CTFtime 팀 프로필</span> <span class="arrow" aria-hidden="true">↗</span></a></p>
             <details>
-              <summary>국제 CTF 활동 알아보기</summary>
-              <p>국제 해킹 대회인 CTF(Capture The Flag)에 팀으로 참가합니다. 다양한 보안 문제에 도전하며 실전 역량과 협업 능력을 키웁니다.</p>
+              <summary><span data-i18n="ctfMore">국제 CTF 활동 알아보기</span></summary>
+              <p><span data-i18n="ctfDetail">국제 해킹 대회인 CTF(Capture The Flag)에 팀으로 참가합니다. 다양한 보안 문제에 도전하며 실전 역량과 협업 능력을 키웁니다.</span></p>
             </details>
           </article>
           <article class="activity">
             <div class="activity-type mono"><span>02 / KNOWLEDGE</span><span>STUDY</span></div>
             <div class="activity-visual" aria-hidden="true">LEARN. SHARE. REPEAT.</div>
-            <h3>혼자의 발견을 모두의 지식으로</h3>
-            <p>기초부터 깊이 있는 주제까지,<br>함께 공부하고 서로의 관점을 배웁니다.</p>
+            <h3><span data-i18n="studyTitle">혼자의 발견을 모두의 지식으로</span></h3>
+            <p><span data-i18n="studyDesc">기초부터 깊이 있는 주제까지,<br>함께 공부하고 서로의 관점을 배웁니다.</span></p>
             <details>
-              <summary>스터디 알아보기</summary>
-              <p>분야별 스터디와 기술 세미나를 소개하는 공간입니다. 실제 운영 주제, 일정, 공개 자료가 준비되면 이곳에서 안내합니다.</p>
+              <summary><span data-i18n="studyMore">스터디 알아보기</span></summary>
+              <p><span data-i18n="studyDetail">분야별 스터디와 기술 세미나를 소개하는 공간입니다. 실제 운영 주제, 일정, 공개 자료가 준비되면 이곳에서 안내합니다.</span></p>
             </details>
           </article>
           <article class="activity">
             <div class="activity-type mono"><span>03 / RESEARCH</span><span>BUG BOUNTY</span></div>
             <div class="activity-visual" aria-hidden="true">{ next_ }</div>
-            <h3>버그 바운티 활동</h3>
-            <p>실제 서비스의 취약점을 발견하고 제보하며, 보안 연구를 더 안전한 서비스로 연결합니다.</p>
+            <h3><span data-i18n="bountyTitle">버그 바운티 활동</span></h3>
+            <p><span data-i18n="bountyDesc">실제 서비스의 취약점을 발견하고 제보하며, 보안 연구를 더 안전한 서비스로 연결합니다.</span></p>
             <details>
-              <summary>버그 바운티 알아보기</summary>
-              <p>버그 바운티 프로그램의 허용 범위 안에서 취약점을 탐구하고, 발견한 내용을 해당 서비스에 책임 있게 제보합니다.</p>
+              <summary><span data-i18n="bountyMore">버그 바운티 알아보기</span></summary>
+              <p><span data-i18n="bountyDetail">버그 바운티 프로그램의 허용 범위 안에서 취약점을 탐구하고, 발견한 내용을 해당 서비스에 책임 있게 제보합니다.</span></p>
             </details>
           </article>
         </div>
@@ -1409,25 +1436,25 @@
       <div class="wrap faq-layout">
         <div class="faq-intro">
           <div class="eyebrow mono"><span class="no">04 /</span> QUESTIONS</div>
-          <h2 class="section-title">활빈이 <em>궁금하다면.</em></h2>
-          <p>팀 소개와 참여에 관한 안내입니다.</p>
+          <h2 class="section-title"><span data-i18n="faqTitle">활빈이 <em>궁금하다면.</em></span></h2>
+          <p><span data-i18n="faqIntro">팀 소개와 참여에 관한 안내입니다.</span></p>
         </div>
         <div class="questions">
           <details open>
-            <summary>활빈은 어떤 팀인가요?</summary>
-            <p>활빈(Hwalbin)은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 보안 문제를 해결하고 실제 서비스의 취약점을 탐구하며, 경험과 지식을 나눕니다.</p>
+            <summary><span data-i18n="faqTeamQ">활빈은 어떤 팀인가요?</span></summary>
+            <p><span data-i18n="faqTeamA">활빈(Hwalbin)은 국제 CTF 대회에 참가하고 버그 바운티 활동을 하는 해킹팀입니다. 함께 보안 문제를 해결하고 실제 서비스의 취약점을 탐구하며, 경험과 지식을 나눕니다.</span></p>
           </details>
           <details>
-            <summary>어떤 분야를 다루나요?</summary>
-            <p>데모에서는 웹 보안, 시스템 보안, 리버스 엔지니어링, 암호학으로 구성했습니다. 실제 팀의 연구 방향에 맞게 분야를 조정할 수 있습니다.</p>
+            <summary><span data-i18n="faqFieldsQ">어떤 분야를 다루나요?</span></summary>
+            <p><span data-i18n="faqFieldsA">데모에서는 웹 보안, 시스템 보안, 리버스 엔지니어링, 암호학으로 구성했습니다. 실제 팀의 연구 방향에 맞게 분야를 조정할 수 있습니다.</span></p>
           </details>
           <details>
-            <summary>팀에 지원할 수 있나요?</summary>
-            <p>현재 이 데모에서는 지원을 받지 않습니다. 모집 여부와 지원 자격, 일정은 팀의 공식 안내가 준비된 후 공개됩니다.</p>
+            <summary><span data-i18n="faqJoinQ">팀에 지원할 수 있나요?</span></summary>
+            <p><span data-i18n="faqJoinA">현재 이 데모에서는 지원을 받지 않습니다. 모집 여부와 지원 자격, 일정은 팀의 공식 안내가 준비된 후 공개됩니다.</span></p>
           </details>
           <details>
-            <summary>협업이나 문의는 어디로 하나요?</summary>
-            <p>공식 문의 채널은 준비 중입니다. 팀에서 확인한 이메일 또는 소셜 채널이 제공되면 이곳에 연결됩니다.</p>
+            <summary><span data-i18n="faqContactQ">협업이나 문의는 어디로 하나요?</span></summary>
+            <p><span data-i18n="faqContactA">공식 문의 채널은 준비 중입니다. 팀에서 확인한 이메일 또는 소셜 채널이 제공되면 이곳에 연결됩니다.</span></p>
           </details>
         </div>
       </div>
@@ -1436,31 +1463,165 @@
       <div class="wrap">
         <div>
           <h2>THE NEXT CHAPTER IS OURS.</h2>
-          <p>다음 가능성을 여는 이름, 활빈.</p>
-        </div><a class="button" href="#main">처음으로 돌아가기 <span class="arrow" aria-hidden="true">↑</span></a>
+          <p><span data-i18n="closing">다음 가능성을 여는 이름, 활빈.</span></p>
+        </div><a class="button" href="#main"><span data-i18n="backTop">처음으로 돌아가기</span> <span class="arrow" aria-hidden="true">↑</span></a>
       </div>
     </section>
   </main>
   <footer>
     <div class="wrap">
-      <div class="footer-main"><a class="brand" href="#main" aria-label="활빈 메인"><span class="brand-symbol"
-            aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko">활빈</span></a>
+      <div class="footer-main"><a class="brand" href="#main" data-i18n-label="homeLabel" aria-label="활빈 메인"><span class="brand-symbol"
+            aria-hidden="true">H</span><span class="brand-word">HWALBIN</span><span class="brand-ko" lang="ko">활빈</span></a>
         <p>© 2026 Hwalbin. All rights reserved.</p>
       </div>
-      <div class="footer-note"><span>디자인 데모 · <a href="https://ctftime.org/team/304129" target="_blank"
-            rel="noopener noreferrer" aria-label="CTFtime에서 활빈 활동 기록 보기 (새 탭)"
-            style="text-decoration:underline;text-underline-offset:3px">CTFtime에서 활동 기록 보기 ↗</a></span><span
+      <div class="footer-note"><span><span data-i18n="demo">디자인 데모 · </span><a href="https://ctftime.org/team/304129" target="_blank"
+            rel="noopener noreferrer" data-i18n-label="historyLabel" aria-label="CTFtime에서 활빈 활동 기록 보기 (새 탭)"
+            style="text-decoration:underline;text-underline-offset:3px"><span data-i18n="historyLink">CTFtime에서 활동 기록 보기 ↗</span></a></span><span
           class="mono">BUILT ON CURIOSITY.</span></div>
     </div>
   </footer>
   <script>
     (() => {
-      const root = document.documentElement, theme = document.querySelector('.theme');
-      function setTheme(value) { root.dataset.theme = value; const label = value === 'dark' ? '밝은 테마로 전환' : '어두운 테마로 전환'; theme.setAttribute('aria-label', label); theme.title = label; theme.textContent = value === 'dark' ? '☼' : '☾'; document.querySelector('meta[name="theme-color"]').content = value === 'dark' ? '#0b0d11' : '#f5f6fa'; }
-      try { const saved = localStorage.getItem('hwalbin-theme'); if (saved === 'light' || saved === 'dark') setTheme(saved) } catch (e) { }
-      theme.addEventListener('click', () => { const value = root.dataset.theme === 'dark' ? 'light' : 'dark'; setTheme(value); try { localStorage.setItem('hwalbin-theme', value) } catch (e) { } });
-      const menu = document.querySelector('.menu'), nav = document.querySelector('.nav'); function closeMenu() { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); menu.textContent = '메뉴 +' }
-      menu.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); menu.textContent = open ? '닫기 −' : '메뉴 +' });
+      const root = document.documentElement;
+      const theme = document.querySelector('.theme');
+      const menu = document.querySelector('.menu');
+      const nav = document.querySelector('.nav');
+      const languageButton = document.querySelector('.language');
+      // Korean copy lives in the HTML so the page also works without JavaScript.
+      // English translations are trusted, authored markup, never user input.
+      const english = {
+        "skip": "Skip to content",
+        "navAbout": "About",
+        "navResearch": "Research",
+        "navActivity": "Activities",
+        "hero": "<strong>Hey there! New to security?</strong><br>Hacking team: Hwalbin<br>International CTF competitions · Bug bounty hunting",
+        "exploreAbout": "Meet Hwalbin",
+        "exploreActivities": "Explore our activities",
+        "aboutTitle": "Question the familiar.<br>Discover <em>new possibilities.</em>",
+        "aboutCuriosity": "How do systems work? What lies beneath the technology we use every day? Hwalbin starts with a spark of curiosity.",
+        "aboutTeam": "Hwalbin is a hacking team that competes in international CTFs and takes part in bug bounty programs. We solve challenges, uncover vulnerabilities, and share what we learn to build a safer tomorrow.",
+        "valueCuriosity": "Curiosity that goes deeper",
+        "valueCuriosityDesc": "Go beyond the answer to understand the principles behind it.",
+        "valueResponsibility": "Responsibility in technology",
+        "valueResponsibilityDesc": "Turn discoveries into safer technology.",
+        "valueTogether": "A culture of growing together",
+        "valueTogetherDesc": "Our questions and experiences inspire the next challenge.",
+        "researchTitle": "Beyond the surface.<br><em>Inside the technology.</em>",
+        "researchIntro": "From the web and systems to binaries and cryptography.<br>We explore security from different perspectives.",
+        "webTab": "Web security",
+        "systemTab": "System security",
+        "reverseTab": "Reverse engineering",
+        "cryptoTab": "Cryptography",
+        "webDesc": "We examine the invisible trust boundaries between browsers and servers. By understanding how the web works, we explore how to design secure services.",
+        "systemDesc": "We explore memory, operating systems, and program execution. We study system fundamentals and defenses to understand how to build robust software.",
+        "reverseDesc": "We work backward from compiled programs to understand their design and behavior. Analyzing binaries and execution paths helps us uncover the story behind the code.",
+        "cryptoDesc": "We explore how mathematics protects information. We study cryptographic algorithms and protocols, and what it takes to implement them securely.",
+        "activityTitle": "Questions <em>lead to action.</em>",
+        "activityBadge": "International CTFs · Bug bounties",
+        "ctfTitle": "Competing in international CTFs",
+        "ctfDesc": "We combine our strengths to solve challenges in international CTF competitions, then share our solutions and lessons learned.",
+        "ctfLink": "CTFtime team profile",
+        "ctfMore": "About our CTF activities",
+        "ctfDetail": "We compete as a team in international Capture The Flag (CTF) hacking competitions. Tackling a wide range of security challenges builds our practical skills and teamwork.",
+        "studyTitle": "From personal discoveries to shared knowledge",
+        "studyDesc": "From fundamentals to advanced topics,<br>we study together and learn from one another.",
+        "studyMore": "About our study groups",
+        "studyDetail": "This space introduces our study groups and technical seminars. Topics, schedules, and public resources will be posted here when they are available.",
+        "bountyTitle": "Bug bounty hunting",
+        "bountyDesc": "We discover and report vulnerabilities in real-world services, turning security research into safer services.",
+        "bountyMore": "About our bug bounty work",
+        "bountyDetail": "We investigate vulnerabilities within the authorized scope of bug bounty programs and responsibly report our findings to the affected services.",
+        "faqTitle": "Curious <em>about Hwalbin?</em>",
+        "faqIntro": "Learn about the team and how to get involved.",
+        "faqTeamQ": "What kind of team is Hwalbin?",
+        "faqTeamA": "Hwalbin is a hacking team that competes in international CTFs and participates in bug bounty programs. We solve security challenges, explore vulnerabilities in real-world services, and share our experience and knowledge.",
+        "faqFieldsQ": "Which fields do you explore?",
+        "faqFieldsA": "This demo covers web security, system security, reverse engineering, and cryptography. These areas can be adjusted to reflect the team’s actual research focus.",
+        "faqJoinQ": "Can I apply to join the team?",
+        "faqJoinA": "This demo does not accept applications. Recruitment status, eligibility, and dates will be published once the team’s official announcement is ready.",
+        "faqContactQ": "How can I get in touch or collaborate?",
+        "faqContactA": "Official contact channels are being prepared. Links to the team’s verified email or social channels will be added here when available.",
+        "closing": "Hwalbin. Opening the door to what comes next.",
+        "backTop": "Back to top",
+        "demo": "Design demo · ",
+        "historyLink": "View our activity on CTFtime ↗",
+        "homeLabel": "Hwalbin home",
+        "navLabel": "Main navigation",
+        "researchLabel": "Research areas",
+        "ctfLabel": "CTFtime team profile (opens in a new tab)",
+        "historyLabel": "View Hwalbin’s activity on CTFtime (opens in a new tab)"
+};
+      const localizedContent = [...document.querySelectorAll('[data-i18n]')].map(element => ({
+        element, key: element.dataset.i18n, korean: element.innerHTML
+      }));
+      const localizedLabels = [...document.querySelectorAll('[data-i18n-label]')].map(element => ({
+        element, key: element.dataset.i18nLabel, korean: element.getAttribute('aria-label')
+      }));
+      const description = document.querySelector('meta[name="description"]');
+      const koreanDescription = description.content;
+      let language = 'ko';
+      function updateMenuLabel() {
+        const open = nav.classList.contains('open');
+        menu.textContent = language === 'en' ? (open ? 'Close −' : 'Menu +') : (open ? '닫기 −' : '메뉴 +');
+      }
+      function setTheme(value) {
+        root.dataset.theme = value;
+        const dark = value === 'dark';
+        const label = language === 'en'
+          ? (dark ? 'Switch to light theme' : 'Switch to dark theme')
+          : (dark ? '밝은 테마로 전환' : '어두운 테마로 전환');
+        theme.setAttribute('aria-label', label);
+        theme.title = label;
+        theme.textContent = dark ? '☼' : '☾';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#0b0d11' : '#f5f6fa';
+      }
+      function setLanguage(value) {
+        language = value === 'en' ? 'en' : 'ko';
+        root.lang = language;
+        localizedContent.forEach(({ element, key, korean }) => {
+          element.innerHTML = language === 'en' ? english[key] : korean;
+        });
+        localizedLabels.forEach(({ element, key, korean }) => {
+          element.setAttribute('aria-label', language === 'en' ? english[key] : korean);
+        });
+        description.content = language === 'en'
+          ? 'Hwalbin — a hacking team exploring a safer world through international CTF competitions and bug bounty programs. Official website design demo.'
+          : koreanDescription;
+        const label = language === 'en' ? '한국어로 전환' : 'Switch to English';
+        languageButton.textContent = language === 'en' ? 'KO' : 'EN';
+        languageButton.lang = language === 'en' ? 'ko' : 'en';
+        languageButton.setAttribute('aria-label', label);
+        languageButton.title = label;
+        updateMenuLabel();
+        setTheme(root.dataset.theme);
+      }
+      try {
+        const savedTheme = localStorage.getItem('hwalbin-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
+        const savedLanguage = localStorage.getItem('hwalbin-language');
+        if (savedLanguage === 'en' || savedLanguage === 'ko') language = savedLanguage;
+      } catch (e) { }
+      setLanguage(language);
+      languageButton.hidden = false;
+      languageButton.addEventListener('click', () => {
+        setLanguage(language === 'ko' ? 'en' : 'ko');
+        try { localStorage.setItem('hwalbin-language', language) } catch (e) { }
+      });
+      theme.addEventListener('click', () => {
+        const value = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        setTheme(value);
+        try { localStorage.setItem('hwalbin-theme', value) } catch (e) { }
+      });
+      function closeMenu() {
+        nav.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+        updateMenuLabel();
+      }
+      menu.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        menu.setAttribute('aria-expanded', String(open));
+        updateMenuLabel();
+      });
       nav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu)); document.addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { closeMenu(); menu.focus() } });
       const tabs = [...document.querySelectorAll('[role="tab"]')]; function activate(tab, focus = false) { tabs.forEach(t => { const selected = t === tab; t.setAttribute('aria-selected', String(selected)); t.tabIndex = selected ? 0 : -1; document.getElementById(t.getAttribute('aria-controls')).hidden = !selected }); if (focus) tab.focus() }
       tabs.forEach((tab, i) => { tab.addEventListener('click', () => activate(tab)); tab.addEventListener('keydown', e => { let next; if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = (i + 1) % tabs.length; if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = (i + tabs.length - 1) % tabs.length; if (e.key === 'Home') next = 0; if (e.key === 'End') next = tabs.length - 1; if (next !== undefined) { e.preventDefault(); activate(tabs[next], true) } }) });
